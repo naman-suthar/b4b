@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_profile.xml"
+    app:startDestination="@id/profileHomeFragment">
+
+    <fragment
+        android:id="@+id/profileHomeFragment"
+        android:name="com.vrcareer.b4b.app.profile.ProfileHomeFragment"
+        android:label="fragment_profile_home"
+        tools:layout="@layout/fragment_profile_home" >
+        <action
+            android:id="@+id/action_profileHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_profileHomeFragment_to_addPaymentMethodFragment"
+            app:destination="@id/addPaymentMethodFragment" />
+        <action
+            android:id="@+id/action_profileHomeFragment_to_addKycDetailsFragment"
+            app:destination="@id/addKycDetailsFragment" />
+        <action
+            android:id="@+id/action_profileHomeFragment_to_privacyPoliciesFragment"
+            app:destination="@id/privacyPoliciesFragment" />
+        <action
+            android:id="@+id/action_profileHomeFragment_to_disclaimerFragment"
+            app:destination="@id/disclaimerFragment" />
+        <action
+            android:id="@+id/action_profileHomeFragment_to_termsAndConditionFragment"
+            app:destination="@id/termsAndConditionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.vrcareer.b4b.app.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileHomeFragment"
+            app:destination="@id/profileHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPaymentMethodFragment"
+        android:name="com.vrcareer.b4b.app.profile.AddPaymentMethodFragment"
+        android:label="fragment_add_payment_method"
+        tools:layout="@layout/fragment_add_payment_method" >
+        <action
+            android:id="@+id/action_addPaymentMethodFragment_to_profileHomeFragment"
+            app:destination="@id/profileHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addKycDetailsFragment"
+        android:name="com.vrcareer.b4b.app.profile.AddKycDetailsFragment"
+        android:label="fragment_add_kyc_details"
+        tools:layout="@layout/fragment_add_kyc_details" >
+        <action
+            android:id="@+id/action_addKycDetailsFragment_to_profileHomeFragment"
+            app:destination="@id/profileHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyPoliciesFragment"
+        android:name="com.vrcareer.b4b.app.profile.policies.PrivacyPoliciesFragment"
+        android:label="fragment_privacy_policies"
+        tools:layout="@layout/fragment_privacy_policies" >
+        <action
+            android:id="@+id/action_privacyPoliciesFragment_to_profileHomeFragment"
+            app:destination="@id/profileHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/disclaimerFragment"
+        android:name="com.vrcareer.b4b.app.profile.policies.DisclaimerFragment"
+        android:label="fragment_disclaimer"
+        tools:layout="@layout/fragment_disclaimer" >
+        <action
+            android:id="@+id/action_disclaimerFragment_to_profileHomeFragment"
+            app:destination="@id/profileHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsAndConditionFragment"
+        android:name="com.vrcareer.b4b.app.profile.policies.TermsAndConditionFragment"
+        android:label="fragment_terms_and_condition"
+        tools:layout="@layout/fragment_terms_and_condition" >
+        <action
+            android:id="@+id/action_termsAndConditionFragment_to_profileHomeFragment"
+            app:destination="@id/profileHomeFragment" />
+    </fragment>
+</navigation>

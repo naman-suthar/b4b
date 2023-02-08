@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".app.refer.ReferHomeFragment">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:src="@drawable/refer_a_friend" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/aclonica"
+            android:text="Earn"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="\u20b9100/Friend"
+            android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:text="Refer your friends to earn \u20b9100 per friend"
+            android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/refer_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="16dp"
+        android:text="Refer friend"
+        app:icon="@drawable/refer"
+        app:iconPadding="16dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/claim_reward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aclonica"
+        android:paddingVertical="16dp"
+        android:text="Claim Earning"
+        app:icon="@drawable/ic_arrow_forward"
+        app:iconGravity="end" />
+</LinearLayout>

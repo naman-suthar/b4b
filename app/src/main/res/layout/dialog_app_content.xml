@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="24dp"
+    android:orientation="vertical">
+<TextView
+    android:id="@+id/tv_privacy_policy"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Privacy Policy"
+    android:gravity="center"
+    android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+    android:paddingVertical="16dp"
+    />
+    <TextView
+        android:id="@+id/tv_terms_and_condition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terms And Conditions"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:paddingVertical="16dp"
+        />
+    <TextView
+        android:id="@+id/tv_disclamer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disclaimer"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:paddingVertical="16dp"
+        />
+   <!-- <TextView
+        android:id="@+id/tv_privacy_policy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+        android:paddingVertical="8dp"
+        />-->
+</LinearLayout>

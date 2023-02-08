@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app.dashboard.ExploreJobApplicatonFormActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Application Form" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--  <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:layout_marginTop="?attr/actionBarSize"
+          >-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_parent_questions"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question1"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question2"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q2"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question3"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q3"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question4"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q4"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question5"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q5"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question6"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q6"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question7"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q7"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans7"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question8"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q8"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <AutoCompleteTextView
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:hint="Select"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question9"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                 <!--       <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/et_answer_q9"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:id="@+id/dropdown_menu_ans9"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+
+                               />
+
+                        </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question10"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question11"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question12"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question13"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question14"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question15"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question16"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question17"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:tag="et_ans"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:scrollbars="vertical"
+                                android:minLines="3"
+                                android:maxLines="10"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question18"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                            <RatingBar
+                                android:layout_marginTop="6dp"
+                                android:tag="et_ans"
+                                android:id="@+id/rBar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:stepSize="1.0"
+                                android:theme="@style/Widget.AppCompat.RatingBar"
+                                android:numStars="5"/>
+
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:tag="tv_question"
+                            android:id="@+id/tv_q19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/airtel_question19"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                        <RatingBar
+                            android:layout_marginTop="6dp"
+                            android:tag="et_ans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:stepSize="1.0"
+                            android:theme="@style/Widget.AppCompat.RatingBar"
+                            android:numStars="5"/>
+
+                        <!--       <com.google.android.material.textfield.TextInputLayout
+                                   android:id="@+id/et_answer_q9"
+                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:layout_marginTop="4dp">
+
+                                   <com.google.android.material.textfield.TextInputEditText
+                                       android:tag="et_ans"
+                                       android:id="@+id/dropdown_menu_ans9"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:inputType="text"
+
+                                      />
+
+                               </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_submit_application"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:text="Submit" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <!--   </LinearLayout>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

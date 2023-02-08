@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="15dp">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+      >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_dialog_institute_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Institute Name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:maxLength="150"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_dialog_degree_grade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Degree/Grade"
+            android:inputType="text"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_dialog_specialization"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="20dp">
+
+        <AutoCompleteTextView
+            android:tag="et_ans"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Specialization"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/modifiedEditText"
+                android:hint="Start From"
+                android:id="@+id/et_dialog_starts_from"
+                android:inputType="none"
+                android:maxLines="1"
+                android:clickable="false"
+                android:focusable="false"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <ImageView
+            android:id="@+id/date_picker_starts_from"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_calendar"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/modifiedEditText"
+                android:hint="Ends"
+                android:id="@+id/et_dialog_ends_on"
+                android:inputType="none"
+                android:maxLines="1"
+                android:clickable="false"
+                android:focusable="false"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <ImageView
+            android:id="@+id/date_picker_ends_on"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_calendar"/>
+    </LinearLayout>
+</LinearLayout>

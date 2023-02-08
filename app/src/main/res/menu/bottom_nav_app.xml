@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:id="@+id/tab_dashboard"
+        />
+    <item
+        android:title="Tasks"
+        android:icon="@drawable/ic_task"
+        android:id="@+id/tab_tasks"
+        />
+    <item
+        android:title="Refer"
+        android:icon="@drawable/ic_refer"
+        android:id="@+id/tab_refer"
+        />
+    <item
+        android:title="Earning"
+        android:icon="@drawable/ic_rupee"
+        android:id="@+id/tab_earning"
+        />
+    <item
+        android:title="Profile"
+        android:icon="@drawable/ic_profile"
+        android:id="@+id/tab_profile"
+        />
+</menu>

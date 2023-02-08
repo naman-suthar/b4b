@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".app.profile.ProfileHomeFragment">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_theme_dark_outline"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_greeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome, Name!"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:layout_marginStart="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/design_default_color_surface"
+                    android:layout_marginTop="16dp"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.Material3.CardView.Elevated"
+                    android:elevation="5dp"
+                    android:layout_margin="20dp"
+                    app:cardCornerRadius="20dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_total_earning"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="20dp"
+                            android:gravity="center"
+                            android:text="Total Earning: \u20B9 0"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/black"
+                            android:layout_marginVertical="2dp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="20dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:id="@+id/tv_amount_pending"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:text="\u20B9 0"
+                                    android:gravity="center"
+                                    android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                                    />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Payment in Process"
+                                    android:gravity="center"
+                                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                                    />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1">
+                                <TextView
+                                    android:id="@+id/tv_amount_approved"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:text="\u20B9 0"
+                                    android:gravity="center"
+                                    android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                                    />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Amount Deposited"
+                                    android:gravity="center"
+                                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mc_choose_payment_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:elevation="5dp"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Choose Payment Method"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_marginStart="10dp"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_forward"
+                            android:layout_gravity="center_vertical"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Choose Payment Method"
+                        android:layout_marginStart="10dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:elevation="5dp"
+                android:layout_marginHorizontal="20dp"
+                app:cardCornerRadius="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    >
+                    <LinearLayout
+                        android:id="@+id/btn_view_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_view_profile"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="5dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="View Profile"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_rupee"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="5dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="Approved Payment"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/mc_kyc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_kyc"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="5dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Complete KYC"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_support"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="20dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_support"
+                            android:layout_gravity="center_vertical"
+
+                            android:layout_marginHorizontal="5dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Support"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btn_app_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="20dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="5dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="App Content"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btn_log_out"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_logout"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginHorizontal="5dp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Logout"
+                            android:layout_gravity="center_vertical"
+                            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>
+

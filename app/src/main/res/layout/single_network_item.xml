@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.Material3.CardView.Filled">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+    <FrameLayout
+        android:id="@+id/frame_loading_network"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tv_network_item_index"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="1."
+        android:layout_gravity="start"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/tv_network_item_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Name Surname"
+        android:layout_gravity="start"
+        android:gravity="center"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Claim"
+        android:enabled="false"
+        android:id="@+id/btn_claim_network_reward"/>
+</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
