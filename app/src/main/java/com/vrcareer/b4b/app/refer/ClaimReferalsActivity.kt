@@ -120,7 +120,7 @@ class ClaimReferalsActivity : AppCompatActivity() {
     }
 }
 
-class NetworkRvAdapter(context: Context, val networkList: List<NetworkUserItem>, val onClaimClicked: (User)->Unit) :
+class NetworkRvAdapter(val context: Context, val networkList: List<NetworkUserItem>, val onClaimClicked: (User)->Unit) :
     RecyclerView.Adapter<NetworkRvAdapter.NetworkItemViewHolder>() {
     private val db = FirebaseDatabase.getInstance()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NetworkItemViewHolder {
@@ -176,6 +176,9 @@ class NetworkRvAdapter(context: Context, val networkList: List<NetworkUserItem>,
                                 }
                             }
                         }
+                            .addOnFailureListener {e->
+                                Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                            }
                         holder.btnClaim.setOnClickListener {
                             if (thisUser != null) {
                                 onClaimClicked(thisUser)
@@ -183,7 +186,9 @@ class NetworkRvAdapter(context: Context, val networkList: List<NetworkUserItem>,
                         }
                     }
             }
-
+                .addOnFailureListener {e->
+                    Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                }
         }
     }
 

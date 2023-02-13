@@ -35,7 +35,7 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:text="\u20b9100/Friend"
+            android:text="\u20b9100/Referral"
             android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
             android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:gravity="center"
-            android:text="Refer your friends to earn \u20b9100 per friend"
+            android:text="Refer your friends to earn \u20b9100 per referral"
             android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
 
     </LinearLayout>
@@ -56,7 +56,7 @@
         android:layout_gravity="center|bottom"
         android:paddingHorizontal="32dp"
         android:paddingVertical="16dp"
-        android:text="Refer friend"
+        android:text="Refer a friend"
         app:icon="@drawable/refer"
         app:iconPadding="16dp" />
 

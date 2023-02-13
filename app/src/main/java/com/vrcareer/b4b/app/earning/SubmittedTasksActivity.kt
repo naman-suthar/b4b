@@ -3,8 +3,10 @@ package com.vrcareer.b4b.app.earning
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.size.ViewSizeResolver
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.firebase.auth.FirebaseAuth
@@ -39,7 +41,17 @@ class SubmittedTasksActivity : AppCompatActivity() {
                                     taskList.add(taskItem)
                                 }
                             }
+                            if (taskList.isEmpty()){
+                                binding?.txtNoHistory?.visibility = View.VISIBLE
+                            }else
+                            {
+                                binding?.txtNoHistory?.visibility = View.GONE
+                            }
                         }
+                        else{
+                            binding?.txtNoHistory?.visibility = View.VISIBLE
+                        }
+
 
                     }
 

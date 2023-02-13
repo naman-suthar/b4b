@@ -13,7 +13,7 @@
         <item>Male</item>
         <item>Female</item>
         <item>Transgender</item>
-        <item>Prefer not to say</item>
+<!--        <item>Prefer not to say</item>-->
 
     </string-array>
     <string name="title_activity_explore_job_detail">ExploreJobDetail</string>

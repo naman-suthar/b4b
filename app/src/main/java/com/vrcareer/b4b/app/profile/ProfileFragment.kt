@@ -3,6 +3,8 @@ package com.vrcareer.b4b.app.profile
 import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -17,8 +19,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.navigation.fragment.findNavController
+import coil.Coil
+import coil.ImageLoader
 import coil.load
+import coil.request.ImageRequest
 import coil.request.SuccessResult
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +41,8 @@ import com.vrcareer.b4b.databinding.FragmentProfileBinding
 import com.vrcareer.b4b.model.AdditionalInfo
 import com.vrcareer.b4b.model.Qualification
 import com.vrcareer.b4b.model.User
+import kotlinx.coroutines.job
+import okhttp3.internal.notify
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -131,10 +140,11 @@ class ProfileFragment : Fragment() {
                         setProfilePicture(userNow?.profile_picture)
                         binding?.let { b ->
                             b.tvUserName.text = userNow?.name
-                            b.tvUserId.text = userNow?.id
+//                            b.tvUserId.text = userNow?.id
                             b.tvUserDob.text = userNow?.dob
                             b.tvUserEmail.text = userNow?.email
                             b.tvUserPhone.text = userNow?.phoneNo
+                            b.tvUserGender.text = userNow?.gender
                             b.tvAltNumber.text = userNow?.additionalInfo?.alternateNo ?: "NA"
                             b.tvUserAddress.text = userNow?.additionalInfo?.address ?: "NA"
                             b.tvUserLanguage.text = userNow?.additionalInfo?.language ?: "NA"
@@ -194,6 +204,9 @@ class ProfileFragment : Fragment() {
                                                     ).show()
 
                                                 }
+                                                .addOnFailureListener {e->
+                                                    Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                                                }
                                             progressBar?.dismiss()
                                         }
                                     }
@@ -207,7 +220,13 @@ class ProfileFragment : Fragment() {
                                 progressBar?.dismiss()
                                     }
                             }
+                                .addOnFailureListener {e->
+                                    Toast.makeText(context,"Image Url error ${e.message}",Toast.LENGTH_SHORT).show()
+                                }
                         }
+                            .addOnFailureListener {e->
+                                Toast.makeText(context,"Storage Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                            }
                     }
                 }
 
@@ -276,6 +295,8 @@ class ProfileFragment : Fragment() {
                 userRef.setValue(userUpdated).addOnSuccessListener {
                     Toast.makeText(requireContext(), "UserUpdated", Toast.LENGTH_SHORT).show()
                     alertDialog?.dismiss()
+                }   .addOnFailureListener {e->
+                    Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -386,6 +407,8 @@ class ProfileFragment : Fragment() {
 
                     userRef.setValue(userUpdated).addOnSuccessListener {
                         alertDialog?.dismiss()
+                    }   .addOnFailureListener {e->
+                        Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -394,14 +417,120 @@ class ProfileFragment : Fragment() {
         }
 
 
+        binding?.btnEditPrimaryInfo?.setOnClickListener {
+            val dialog = MaterialAlertDialogBuilder(requireContext())
+            dialog.setTitle("Edit Primary Info")
+            val view =
+                LayoutInflater.from(requireContext())
+                    .inflate(R.layout.dialog_edit_primary_info, null, false)
+            dialog.setView(view)
+            val emailEt: EditText = view.findViewById(R.id.et_dialog_email_primary_edit)
+            val dobET: EditText = view.findViewById(R.id.et_dob_primary_edit)
+            val dobPicker: ImageView = view.findViewById(R.id.date_picker_primary_edit)
+            val gender: Spinner = view.findViewById(R.id.spinner_gender_primary_edit)
+            val genders = resources.getStringArray(R.array.Genders)
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_dropdown_item, genders
+            )
+            gender.adapter = adapter
+            var genderSelected = userNow?.gender
+            emailEt.setText(userNow?.email ?: "")
+            dobET.setText(userNow?.dob ?: "")
+            val dateSetListener =
+                DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    cal.set(Calendar.YEAR, year)
+                    cal.set(Calendar.MONTH, monthOfYear)
+                    cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                    val myFormat = "MM/dd/yyyy" // mention the format you need
+                    val sdf = SimpleDateFormat(myFormat, Locale.US)
+                    dobET.setText(sdf.format(cal.time))
+                }
+            dobPicker.setOnClickListener {
+                DatePickerDialog(requireContext(),
+                    dateSetListener,
+                    // set DatePickerDialog to point to today's date when it loads up
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)).show()
+            }
+            when(userNow?.gender){
+                genders[1]-> gender.setSelection(1)
+                genders[2] -> gender.setSelection(2)
+                genders[3] -> gender.setSelection(3)
+            }
+            gender.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    genderSelected = genders[p2]
+                }
 
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+            }
+            dialog.setCancelable(false)
+            dialog.setPositiveButton("Confirm", null)
+                .setNegativeButton("Cancel") { d, _ ->
+                    d.dismiss()
+                }
+
+            alertDialog = dialog.create()
+            alertDialog?.show()
+            val positiveButton = alertDialog?.getButton(android.app.AlertDialog.BUTTON_POSITIVE)
+            positiveButton?.setOnClickListener {
+                val email = emailEt.text.toString()
+                val dob = dobET.text.toString()
+
+                val currentUser = userNow?.copy()
+                if (email.isNotEmpty()) {
+                    currentUser?.email = email
+                }
+                if (dob.isNotEmpty()) {
+                    currentUser?.dob = dob
+                }
+                if (genderSelected != genders[0]){
+                    currentUser?.gender = genderSelected
+                }else{
+                    Toast.makeText(requireContext(),"Select Gender please",Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+
+                userRef.setValue(currentUser).addOnSuccessListener {
+                    alertDialog?.dismiss()
+                }   .addOnFailureListener {e->
+                    Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+//            Toast.makeText(requireContext(), "Working On this", Toast.LENGTH_SHORT).show()
+        }
 
 
 
         binding?.btnUploadProfile?.setOnClickListener {
 
+            val dialog = BottomSheetDialog(requireContext())
+            val view=layoutInflater.inflate(R.layout.bottom_sheet_profile_options,null)
 
-            galleryImage.launch("image/*")
+            val btnEdit: MaterialCardView = view.findViewById(R.id.btn_edit_profile_pic)
+            val btnDelete: MaterialCardView = view.findViewById(R.id.btn_delete_profile_pic)
+            btnEdit.setOnClickListener {
+                galleryImage.launch("image/*")
+                dialog.dismiss()
+            }
+            btnDelete.setOnClickListener {
+                storageReference.child("Images/ProfilePics").child(
+                    auth.currentUser!!.uid
+                ).delete().addOnSuccessListener {
+                    Toast.makeText(requireContext(),"Profile Deleted",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            dialog.setContentView(view)
+            dialog.show()
+
 
 
         }
@@ -411,7 +540,23 @@ class ProfileFragment : Fragment() {
     private fun setProfilePicture(profilePicture: String?) {
         val imageUrl = profilePicture?.toUri()
         imageUrl?.let {
-            binding?.profileImage?.load(it)
+            binding?.profileImage?.load(it){
+                this.listener(
+                    onSuccess = {_,success ->
+                        Log.d("ImageOnSuccess","$success")
+                    },
+                    onError = {_,err ->
+                        Log.d("ImageOnSuccess","$err")
+                        binding?.profileImage?.setImageDrawable(resources.getDrawable(R.drawable.profile_placeholder))
+                    },
+                    onStart = {
+                        binding?.profileImage?.setImageDrawable(resources.getDrawable(R.drawable.profile_placeholder))
+                    }
+
+                )
+            }
+
+
         }
 
     }

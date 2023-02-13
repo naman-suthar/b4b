@@ -88,7 +88,7 @@
                     android:maxLines="1"
                     android:inputType="number"
                     android:maxLength="25"
-                    android:hint="Adhaar Number" />
+                    android:hint="Aadhaar Number" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout

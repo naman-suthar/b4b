@@ -116,9 +116,9 @@ class ExploreJobApplicatonFormActivity : AppCompatActivity() {
                             val tvQuestion =
                                 (mc as LinearLayout).findViewWithTag<TextView>("tv_question")
                             val etAns = (mc as LinearLayout).findViewWithTag<RatingBar>("et_ans")
-                            if (etAns.rating.toString().isEmpty()){
+                            if (etAns.rating == 0f){
                                 etAns.requestFocus()
-                                Toast.makeText(this, "Enter Valid Ratings", Toast.LENGTH_SHORT)
+                                Toast.makeText(this, "Ratings can not be zero", Toast.LENGTH_SHORT)
                                     .show()
                                 d.dismiss()
                                 return@setPositiveButton
@@ -174,7 +174,9 @@ class ExploreJobApplicatonFormActivity : AppCompatActivity() {
                             d.dismiss()
                             finish()
                         }
-
+                        .addOnFailureListener {e->
+                            Toast.makeText(this,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                        }
 
                 }
             }

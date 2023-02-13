@@ -130,6 +130,9 @@ class ProfileHomeFragment : Fragment() {
                 }
             }
         }
+            .addOnFailureListener {e->
+                Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+            }
     }
     private fun getEarningData() {
         db.reference.child("earnings").child(auth.currentUser?.uid.toString()).get().addOnSuccessListener {
@@ -146,7 +149,7 @@ class ProfileHomeFragment : Fragment() {
                           b.tvAmountPending.text = "₹${earningDetails?.pending_withdrawal.toString()}"
                       }
                      if (ed.balance != null && ed.total_pending != null){
-                         b.tvTotalEarning.text = "Total Earning: \u20B9 ${ed.total_earning}"
+                         b.tvTotalEarning.text = "Total Earnings: \u20B9 ${ed.total_earning}"
                      }
 
                     }

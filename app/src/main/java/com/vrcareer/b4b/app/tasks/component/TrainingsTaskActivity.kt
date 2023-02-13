@@ -10,6 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.vrcareer.b4b.R
 import com.vrcareer.b4b.databinding.ActivityTrainingsTaskBinding
 import com.vrcareer.b4b.model.Assessment
 import com.vrcareer.b4b.model.TaskItem
@@ -19,7 +20,6 @@ class TrainingsTaskActivity : AppCompatActivity() {
 
     //    private lateinit var youtubePlayerView: YouTubePlayerView
     private var binding: ActivityTrainingsTaskBinding? = null
-    private var API_KEYS = "AIzaSyCjoZxgdElW05f3CpnCUh_-9G_oyFTacsk"
     private var VIDEO_ID = "vLe9sN-FNeA"
     private val db = FirebaseDatabase.getInstance()
     private val auth = FirebaseAuth.getInstance()
@@ -29,7 +29,6 @@ class TrainingsTaskActivity : AppCompatActivity() {
 
         binding = ActivityTrainingsTaskBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-
 
         binding?.youtubePlayerView?.let { lifecycle.addObserver(it) }
 

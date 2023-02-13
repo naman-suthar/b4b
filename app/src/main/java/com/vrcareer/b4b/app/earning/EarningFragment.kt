@@ -179,10 +179,10 @@ class EarningFragment : Fragment() {
             val withdrawAmountInputText = etAmount.text.toString().trim()
             if (withdrawAmountInputText.isNotEmpty()) {
                 //Do something
-                if (withdrawAmountInputText.toInt() < 50) {
+                if (withdrawAmountInputText.toInt() < 500) {
 
                     etAmount.requestFocus()
-                    etAmount.error = "Minimum amount is \u20B950"
+                    etAmount.error = "Minimum amount is \u20B9500"
                 } else if (availableToWithdraw != null && withdrawAmountInputText.toInt() > availableToWithdraw!!) {
                     etAmount.requestFocus()
                     etAmount.error = "Maximum amount is \u20B9$availableToWithdraw"

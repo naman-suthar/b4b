@@ -92,7 +92,7 @@ class RegisterActivity : AppCompatActivity() {
                             pending_withdrawal = 0
                         )
                         db.reference.child("earnings").child(user?.uid.toString()).setValue(blankEarning)
-                        Toast.makeText(this,"User Registered",Toast.LENGTH_SHORT).show()
+
                         startActivity(Intent(this,HomeActivity::class.java))
                         finish()
                     } else{

@@ -99,7 +99,7 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-
+        binding.bottomNav.selectedItemId = R.id.tab_tasks
         setContentView(binding.root)
     }
 
@@ -149,10 +149,11 @@ class HomeActivity : AppCompatActivity() {
                                         .setValue(
                                             referalItem
                                         ).addOnSuccessListener {
+
                                         }.addOnFailureListener {
                                             Toast.makeText(
                                                 this@HomeActivity,
-                                                "Firebase Error in Adding Refferal",
+                                                "Firebase Error in Adding Referral",
                                                 Toast.LENGTH_SHORT
                                             ).show()
 
@@ -209,7 +210,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             // Take appropriate action with the profile name
-            Toast.makeText(this, "$referredUid", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "referred by $referredUid", Toast.LENGTH_SHORT).show()
 
         }
 

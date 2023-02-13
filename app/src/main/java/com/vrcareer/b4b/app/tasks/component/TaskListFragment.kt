@@ -157,6 +157,9 @@ class TaskListFragment : Fragment() {
                                 }
 
                             }
+                            .addOnFailureListener {e->
+                                Toast.makeText(context,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                            }
 
                     }
 

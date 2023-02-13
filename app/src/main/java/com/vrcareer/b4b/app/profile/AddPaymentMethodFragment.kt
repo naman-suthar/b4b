@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -57,6 +58,9 @@ class AddPaymentMethodFragment : Fragment() {
                         }
                     }
                 }
+            }
+            .addOnFailureListener {
+                Toast.makeText(context,"${it.message}",Toast.LENGTH_SHORT).show()
             }
     }
 

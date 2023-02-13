@@ -7,21 +7,21 @@ plugins {
 
 android {
     namespace 'com.vrcareer.b4b'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.vrcareer.b4b"
         minSdk 26
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        targetSdk 33
+        versionCode 6
+        versionName "1.2.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -64,7 +64,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-common:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.1'
+    implementation 'com.google.android.play:integrity:1.1.0'
     implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.1'
     implementation 'androidx.browser:browser:1.3.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'

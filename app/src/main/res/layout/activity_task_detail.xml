@@ -100,7 +100,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_weight="1"
             android:enabled="false"
-            android:text="Submit" />
+            android:text="Start Earning" />
     </LinearLayout>
 
 </LinearLayout>

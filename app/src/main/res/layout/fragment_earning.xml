@@ -52,7 +52,6 @@ android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:text="Approved"
                     android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
-                    android:textColor="@color/green_approved"
                     android:textStyle="bold" />
 
                 <TextView
@@ -66,7 +65,7 @@ android:visibility="gone"
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Money Credited"
+                    android:text="Amount Earned"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
             </LinearLayout>
 

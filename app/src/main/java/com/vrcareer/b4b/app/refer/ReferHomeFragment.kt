@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.dynamiclinks.ktx.*
@@ -75,6 +76,8 @@ class ReferHomeFragment : Fragment() {
 
                 val shareIntent = Intent.createChooser(sendIntent, null)
                 context?.startActivity(shareIntent)
+            }   .addOnFailureListener {e->
+                Toast.makeText(context,"Network error ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
 

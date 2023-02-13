@@ -327,9 +327,8 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:tag="et_ans"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:inputType="number"
-                                android:maxLines="1"
-                                android:maxLength="6"/>
+                                android:inputType="text"
+                                android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
                         <!--       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
@@ -378,9 +377,9 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:tag="et_ans"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:inputType="number"
+                                android:inputType="text"
                                 android:maxLines="1"
-                                android:maxLength="6"/>
+                               />
                         </com.google.android.material.textfield.TextInputLayout>
                         <!--       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
@@ -557,22 +556,84 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-                <androidx.recyclerview.widget.RecyclerView
+                <LinearLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Transaction Proof"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            />
+                        <ImageView
+                            android:id="@+id/img_transaction_proof_submit_task"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/profile_placeholder"
+                            />
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Photo"
+                            app:icon="@drawable/ic_baseline_add_24"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:id="@+id/btn_add_photo_transaction"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Qr Code Photo"
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            />
+                        <ImageView
+                            android:id="@+id/img_qr_code_submit_task"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/profile_placeholder"
+                            />
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Photo"
+                            app:icon="@drawable/ic_baseline_add_24"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:id="@+id/btn_add_photo_qr"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <!--<androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/rv_images_selected"
                     android:layout_marginTop="24dp"
                     android:layout_marginHorizontal="20dp"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Photo"
-                    app:icon="@drawable/ic_baseline_add_24"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/btn_add_photo_proof"
-                    />
+                    />-->
+
             </LinearLayout>
         </LinearLayout>
 

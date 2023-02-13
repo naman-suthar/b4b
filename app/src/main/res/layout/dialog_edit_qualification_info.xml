@@ -69,7 +69,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/modifiedEditText"
-                android:hint="Start From"
+                android:hint="Starts from"
                 android:id="@+id/et_dialog_starts_from"
                 android:inputType="none"
                 android:maxLines="1"
@@ -99,7 +99,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/modifiedEditText"
-                android:hint="Ends"
+                android:hint="Pass-out year"
                 android:id="@+id/et_dialog_ends_on"
                 android:inputType="none"
                 android:maxLines="1"

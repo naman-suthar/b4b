@@ -128,6 +128,9 @@ class AssessmentActivity : AppCompatActivity() {
                         startActivity(intent)*/
                         finish()
                     }
+                    .addOnFailureListener {e->
+                        Toast.makeText(this,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                    }
             }
         }
 

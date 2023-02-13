@@ -38,6 +38,9 @@ private val auth = FirebaseAuth.getInstance()
                             }
                         }
                     }
+                    .addOnFailureListener {e->
+                        Toast.makeText(this,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                    }
             }
 
         }
@@ -59,6 +62,10 @@ private val auth = FirebaseAuth.getInstance()
                         }
                     }
                 }
+                .addOnFailureListener {e->
+                    Toast.makeText(this,"Network error ${e.message}",Toast.LENGTH_SHORT).show()
+                }
+
         }
 
         binding.btnFillApplicationForm.setOnClickListener {

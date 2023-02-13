@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.tasks.Tasks.await
 import com.google.firebase.auth.FirebaseAuth
@@ -79,6 +80,9 @@ class DashBoardFragment : Fragment() {
                 rv.adapter = adapter
             }
         }
+            .addOnFailureListener {e->
+                Toast.makeText(context,"Network error ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     fun fetchJobIsAppliedOrNot(jobId: String?): Boolean {
