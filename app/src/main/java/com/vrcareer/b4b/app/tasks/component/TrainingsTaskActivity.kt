@@ -20,7 +20,6 @@ class TrainingsTaskActivity : AppCompatActivity() {
 
     //    private lateinit var youtubePlayerView: YouTubePlayerView
     private var binding: ActivityTrainingsTaskBinding? = null
-    private var VIDEO_ID = "vLe9sN-FNeA"
     private val db = FirebaseDatabase.getInstance()
     private val auth = FirebaseAuth.getInstance()
     //    lateinit var youtubePlayInit: YouTubePlayer.OnInitializedListener
@@ -32,16 +31,20 @@ class TrainingsTaskActivity : AppCompatActivity() {
 
         binding?.youtubePlayerView?.let { lifecycle.addObserver(it) }
 
-        binding?.youtubePlayerView?.addYouTubePlayerListener(object :
-            AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                val videoId = "vLe9sN-FNeA"
-                youTubePlayer.loadVideo(videoId, 0F)
 
-            }
-        })
         if (intent != null){
             val task = intent.getSerializableExtra("task") as TaskItem
+            binding?.txtTrainingMessage?.text = task.training_note
+           binding?.youtubePlayerView?.enableAutomaticInitialization = false
+            binding?.youtubePlayerView?.initialize(object : AbstractYouTubePlayerListener(){
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    val videoId = task.training_video_ID
+                    if (videoId != null) {
+                        youTubePlayer.loadVideo(videoId, 0F)
+                    }
+
+                }
+            })
             db.reference.child("trainings").child(auth.currentUser!!.uid).child(task?.taskId!!).addValueEventListener(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {

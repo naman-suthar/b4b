@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
+import com.vrcareer.b4b.MyApplication
 import com.vrcareer.b4b.R
 import com.vrcareer.b4b.app.dashboard.DashBoardFragment
 import com.vrcareer.b4b.app.earning.EarningFragment
@@ -26,7 +27,18 @@ class HomeActivity : AppCompatActivity() {
         "https://app.pyjamahr.com/careers?company=VRCareerz&company_uuid=60D280017E&isHeaderVisible=true&is_careers_page=true"
     private var package_name = "com.android.chrome"
 
-
+    override fun onStart() {
+        super.onStart()
+        if((this.application as MyApplication).userUniv == null){
+            auth.currentUser?.uid?.let {uid->
+                db.reference.child("users").child(uid).get().addOnSuccessListener {
+                    if (it.exists()){
+                        (this.application as MyApplication).userUniv = it.getValue(User::class.java)
+                    }
+                }
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)

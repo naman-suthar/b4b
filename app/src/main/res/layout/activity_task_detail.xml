@@ -39,6 +39,7 @@
 
 
                 <TextView
+                    android:id="@+id/txt_task_steps"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/airtel_merchant_onboarding_steps"
@@ -52,6 +53,7 @@
                     android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
                 <TextView
+                    android:id="@+id/txt_task_guidelines"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -66,6 +68,7 @@
                     android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
                 <TextView
+                    android:id="@+id/txt_task_note"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"

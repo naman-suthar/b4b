@@ -71,7 +71,8 @@ class DashBoardFragment : Fragment() {
             adapter = context?.let { it1 ->
                 ExploreJobsAdapter(it1, joblist = Job_List) { job ->
                     val intent = Intent(requireActivity(), ExploreJobDetail::class.java)
-                    intent.putExtra("job_id", job.job_id)
+                    intent.putExtra("job", job)
+
                     requireActivity().startActivity(intent)
                 }
             }

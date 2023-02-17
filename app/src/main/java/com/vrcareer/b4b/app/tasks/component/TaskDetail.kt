@@ -28,6 +28,9 @@ class TaskDetail : AppCompatActivity() {
         setContentView(binding?.root)
         if (intent!=null){
             task = intent.getSerializableExtra("task") as TaskItem
+            binding?.txtTaskSteps?.text = task?.task_steps_to_follow?.replace("""\\n""","\n")
+            binding?.txtTaskGuidelines?.text = task?.task_guidelines?.replace("""\\n""","\n")
+            binding?.txtTaskNote?.text = task?.task_note?.replace("""\\n""","\n")
         }
         db.reference.child("trainings").child(auth.currentUser!!.uid).child(task?.taskId!!).addValueEventListener(
             object : ValueEventListener{

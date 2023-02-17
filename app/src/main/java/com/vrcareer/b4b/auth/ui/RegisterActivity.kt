@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
             val dob = binding?.etUserDob?.text.toString()
             val email = binding?.etUserEmail?.text.toString()
 
-            if (!name.isNullOrEmpty() && !mobileNo.isNullOrEmpty() && !dob.isNullOrEmpty() && !email.isNullOrEmpty() && gender != genders[0]){
+            if (!name.isNullOrEmpty()  && !dob.isNullOrEmpty() && !email.isNullOrEmpty() && gender != genders[0]){
                 val user = auth.currentUser
                 val updateUser = User(
                     user?.uid,
@@ -106,10 +106,10 @@ class RegisterActivity : AppCompatActivity() {
                     binding.etUserName.error = "Empty"
                     binding.etUserName.requestFocus()
                 }
-                if (mobileNo.isNullOrEmpty()){
+              /*  if (mobileNo.isNullOrEmpty()){
                     binding.etUserMobileNumber.error = "Empty"
                     binding.etUserMobileNumber.requestFocus()
-                }
+                }*/
                 if (dob.isNullOrEmpty()){
                     binding.etUserDob.error = "Empty"
                     binding.etUserDob.requestFocus()

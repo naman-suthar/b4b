@@ -10,12 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -47,7 +42,7 @@ class SubmitTaskActivity : AppCompatActivity() {
     private var taskIntent: TaskItem? = null
     private val storage = FirebaseStorage.getInstance()
     private var storageReference = storage.reference
-
+    private var indexer: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val progressDialog = ProgressDialog(this)
@@ -55,115 +50,246 @@ class SubmitTaskActivity : AppCompatActivity() {
         setContentView(binding?.root)
         if (intent != null) {
             taskIntent = intent.getSerializableExtra("task") as TaskItem
-        }
-        val galleryImage = registerForActivityResult(
-            ActivityResultContracts.GetContent(),
-            ActivityResultCallback {
-
-                binding?.imgTransactionProofSubmitTask?.setImageURI(it)
-//                imgUri = it
-
-                auth.currentUser?.uid?.let { uid ->
-                    it?.let { uri ->
-                        val progressBar = ProgressDialog(this)
-                        progressBar?.setTitle("Uploading")
-                        progressBar?.show()
-                        val timeOfNow = System.currentTimeMillis()
-                        val uniqueId = "${uid}${timeOfNow}"
-                        storageReference.child("Images/TasksProof").child(
-                            uid
-                        ).child(taskIntent!!.taskId!!).child(timeOfNow.toString()).child("0")
-                            .putFile(uri).addOnSuccessListener { task ->
-                            task.metadata!!.reference!!.downloadUrl.addOnSuccessListener { urifs ->
-                                imageList.add(0, urifs.toString())
-                                progressBar.dismiss()
-                            }
-                                .addOnFailureListener { e ->
-                                    progressBar.dismiss()
-                                    Toast.makeText(
-                                        this,
-                                        "Image Url error ${e.message}",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                        }
-                            .addOnFailureListener { e ->
-                                progressBar.dismiss()
-                                Toast.makeText(
-                                    this,
-                                    "Storage Network error ${e.message}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+            taskIntent?.screeningQuestions?.forEachIndexed { i, question ->
+                val view = when (question.question_type) {
+                    QuestionType.Text.type -> LayoutInflater.from(this)
+                        .inflate(R.layout.question_item_text, binding?.root, false)
+                    QuestionType.MultiLineText.type -> LayoutInflater.from(this)
+                        .inflate(R.layout.question_item_multi_text, binding?.root, false)
+                    QuestionType.Boolean.type -> LayoutInflater.from(this)
+                        .inflate(R.layout.question_item_boolean, binding?.root, false)
+                    QuestionType.Number.type -> LayoutInflater.from(this)
+                        .inflate(R.layout.question_item_number, binding?.root, false)
+                    QuestionType.Dropdown.type -> LayoutInflater.from(this)
+                        .inflate(R.layout.question_item_drop_down, binding?.root, false)
+                    QuestionType.Ratings.type -> LayoutInflater.from(this)
+                        .inflate(R.layout.question_item_ratings, binding?.root, false)
+                    QuestionType.Photo.type -> LayoutInflater.from(this)
+                        .inflate(R.layout.question_type_photo, binding?.root, false)
+                    else -> {
+                        null
                     }
                 }
 
-            }
-        )
-        val galleryImage2 = registerForActivityResult(
-            ActivityResultContracts.GetContent(),
-            ActivityResultCallback {
+                val tvQuestion: TextView? = view?.findViewWithTag("tv_question")
+                tvQuestion?.text = question.question_statement
+                when (question.question_type) {
+                    QuestionType.Boolean.type -> {
+                        val etAnswer: EditText? = view?.findViewWithTag("et_ans")
+                        val options = listOf<String>("YES", "NO")
+                        etAnswer?.hint = "Select"
+                        val adapter = ArrayAdapter(
+                            this@SubmitTaskActivity,
+                            android.R.layout.simple_list_item_1, options
+                        )
+                        (etAnswer as? AutoCompleteTextView)?.setAdapter(adapter)
+                    }
+                    QuestionType.Dropdown.type -> {
+                        val etAnswer: EditText? = view?.findViewWithTag("et_ans")
+                        val options: List<String> = question.options ?: mutableListOf()
+                        etAnswer?.hint = "Select"
+                        val adapter = ArrayAdapter(
+                            this@SubmitTaskActivity,
+                            android.R.layout.simple_list_item_1, options
+                        )
+                        (etAnswer as? AutoCompleteTextView)?.setAdapter(adapter)
+                    }
+                    QuestionType.Photo.type -> {
+                        val myIndexer = indexer
+                        val imagePreview: ImageView? = view?.findViewWithTag("preview_image")
+                        val btnSelectPhoto: Button? = view?.findViewWithTag("btn_add_photo")
 
-                binding?.imgQrCodeSubmitTask?.setImageURI(it)
+                        val galleryImage = registerForActivityResult(
+                            ActivityResultContracts.GetContent(),
+                            ActivityResultCallback {
+                                if (myIndexer > imageList.size) {
+                                    Toast.makeText(this,"Please Select Previous Image first",Toast.LENGTH_SHORT).show()
+                                    return@ActivityResultCallback
+                                }
+                                imagePreview?.setImageURI(it)
 //                imgUri = it
 
-                auth.currentUser?.uid?.let { uid ->
-                    it?.let { uri ->
-                        val progressBar = ProgressDialog(this)
-                        progressBar?.setTitle("Uploading")
-                        progressBar?.show()
-                        val timeOfNow = System.currentTimeMillis()
-                        val uniqueId = "${uid}${timeOfNow}"
-                        storageReference.child("Images/TasksProof").child(
-                            uid
-                        ).child(taskIntent!!.taskId!!).child(timeOfNow.toString()).child("1")
-                            .putFile(uri).addOnSuccessListener { task ->
-                            task.metadata!!.reference!!.downloadUrl.addOnSuccessListener { urifs ->
-                                imageList.add(1, urifs.toString())
-                                progressBar.dismiss()
-                            }
-                                .addOnFailureListener { e ->
-                                    progressBar.dismiss()
-                                    Toast.makeText(
-                                        this,
-                                        "Image Url error ${e.message}",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                auth.currentUser?.uid?.let { uid ->
+                                    it?.let { uri ->
+                                        val progressBar = ProgressDialog(this)
+                                        progressBar?.setTitle("Uploading")
+                                        progressBar?.setCancelable(false)
+                                        progressBar?.show()
+                                        val timeOfNow = System.currentTimeMillis()
+                                        val uniqueId = "${uid}${timeOfNow}"
+
+                                        storageReference.child("Images/TasksProof").child(
+                                            uid
+                                        ).child(taskIntent!!.taskId!!).child(timeOfNow.toString())
+                                            .child(tvQuestion?.text.toString())
+                                            .putFile(uri).addOnSuccessListener { task ->
+                                                task.metadata!!.reference!!.downloadUrl.addOnSuccessListener { urifs ->
+
+                                                    if (myIndexer == imageList.size) {
+                                                        imageList.add(myIndexer, urifs.toString())
+                                                    } else {
+                                                        imageList[myIndexer] = urifs.toString()
+                                                    }
+
+                                                    Log.d("Indexer", " $myIndexer $imageList")
+                                                    progressBar.dismiss()
+                                                }
+                                                    .addOnFailureListener { e ->
+                                                        progressBar.dismiss()
+                                                        Toast.makeText(
+                                                            this,
+                                                            "Image Url error ${e.message}",
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                    }
+                                            }
+                                            .addOnFailureListener { e ->
+                                                progressBar.dismiss()
+                                                Toast.makeText(
+                                                    this,
+                                                    "Storage Network error ${e.message}",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                    }
                                 }
-                        }
-                            .addOnFailureListener { e ->
-                                progressBar.dismiss()
-                                Toast.makeText(
-                                    this,
-                                    "Storage Network error ${e.message}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+
                             }
+                        )
+
+                        btnSelectPhoto?.setOnClickListener {
+                            galleryImage.launch("image/*")
+                        }
+                        indexer += 1
                     }
+
                 }
 
+
+                binding?.llQuestionare?.addView(view)
+
             }
-        )
-        binding?.btnAddPhotoTransaction?.setOnClickListener {
-            galleryImage.launch("image/*")
         }
-        binding?.btnAddPhotoQr?.setOnClickListener {
-            galleryImage2.launch("image/*")
-        }
+        /*  val galleryImage = registerForActivityResult(
+              ActivityResultContracts.GetContent(),
+              ActivityResultCallback {
+
+  //                binding?.imgTransactionProofSubmitTask?.setImageURI(it)
+  //                imgUri = it
+
+                  auth.currentUser?.uid?.let { uid ->
+                      it?.let { uri ->
+                          val progressBar = ProgressDialog(this)
+                          progressBar?.setTitle("Uploading")
+                          progressBar?.show()
+                          val timeOfNow = System.currentTimeMillis()
+                          val uniqueId = "${uid}${timeOfNow}"
+                          storageReference.child("Images/TasksProof").child(
+                              uid
+                          ).child(taskIntent!!.taskId!!).child(timeOfNow.toString()).child("0")
+                              .putFile(uri).addOnSuccessListener { task ->
+                              task.metadata!!.reference!!.downloadUrl.addOnSuccessListener { urifs ->
+                                  imageList.add(0, urifs.toString())
+                                  progressBar.dismiss()
+                              }
+                                  .addOnFailureListener { e ->
+                                      progressBar.dismiss()
+                                      Toast.makeText(
+                                          this,
+                                          "Image Url error ${e.message}",
+                                          Toast.LENGTH_SHORT
+                                      ).show()
+                                  }
+                          }
+                              .addOnFailureListener { e ->
+                                  progressBar.dismiss()
+                                  Toast.makeText(
+                                      this,
+                                      "Storage Network error ${e.message}",
+                                      Toast.LENGTH_SHORT
+                                  ).show()
+                              }
+                      }
+                  }
+
+              }
+          )
+          val galleryImage2 = registerForActivityResult(
+              ActivityResultContracts.GetContent(),
+              ActivityResultCallback {
+
+  //                binding?.imgQrCodeSubmitTask?.setImageURI(it)
+  //                imgUri = it
+
+                  auth.currentUser?.uid?.let { uid ->
+                      it?.let { uri ->
+                          val progressBar = ProgressDialog(this)
+                          progressBar?.setTitle("Uploading")
+                          progressBar?.show()
+                          val timeOfNow = System.currentTimeMillis()
+                          val uniqueId = "${uid}${timeOfNow}"
+                          storageReference.child("Images/TasksProof").child(
+                              uid
+                          ).child(taskIntent!!.taskId!!).child(timeOfNow.toString()).child("1")
+                              .putFile(uri).addOnSuccessListener { task ->
+                              task.metadata!!.reference!!.downloadUrl.addOnSuccessListener { urifs ->
+                                  imageList.add(1, urifs.toString())
+                                  progressBar.dismiss()
+                              }
+                                  .addOnFailureListener { e ->
+                                      progressBar.dismiss()
+                                      Toast.makeText(
+                                          this,
+                                          "Image Url error ${e.message}",
+                                          Toast.LENGTH_SHORT
+                                      ).show()
+                                  }
+                          }
+                              .addOnFailureListener { e ->
+                                  progressBar.dismiss()
+                                  Toast.makeText(
+                                      this,
+                                      "Storage Network error ${e.message}",
+                                      Toast.LENGTH_SHORT
+                                  ).show()
+                              }
+                      }
+                  }
+
+              }
+          )*/
+//        binding?.btnAddPhotoTransaction?.setOnClickListener {
+//            galleryImage.launch("image/*")
+//        }
+//        binding?.btnAddPhotoQr?.setOnClickListener {
+//            galleryImage2.launch("image/*")
+//        }
         binding?.btnSubmitTask?.setOnClickListener {
             val answerList = mutableListOf<Answer>()
-            binding?.llQuestionare?.children?.forEach { lc ->
+            var incrementor = 0
+            binding?.llQuestionare?.children?.forEachIndexed { i, lc ->
                 (lc as? MaterialCardView)?.let { qc ->
                     val question = qc.findViewWithTag<TextView>("tv_question").text.toString()
-                    val answerET = qc.findViewWithTag<EditText>("et_ans")
-                    if (answerET.text.toString().isEmpty()) {
-                        answerET.requestFocus()
-                        answerET.error = "Please Submit answer"
-                        return@setOnClickListener
+                    if (taskIntent?.screeningQuestions?.get(i)?.question_type != QuestionType.Photo.type) {
+                        val answerET = qc.findViewWithTag<EditText>("et_ans")
+                        if (answerET.text.toString().isEmpty()) {
+                            answerET.requestFocus()
+                            answerET.error = "Please Submit answer"
+                            return@setOnClickListener
+                        } else {
+                            val answer =
+                                Answer(question = question, answer = answerET.text.toString())
+                            answerList.add(answer)
+                        }
                     } else {
-                        val answer = Answer(question = question, answer = answerET.text.toString())
+                        val answerET = imageList[incrementor]
+
+                        val answer = Answer(question = question, answer = answerET)
                         answerList.add(answer)
+                        incrementor += 1
+
                     }
+
                 }
             }
             Log.d("Answers", "$answerList")
@@ -195,52 +321,52 @@ class SubmitTaskActivity : AppCompatActivity() {
                         .addOnSuccessListener {
                             Toast.makeText(this, "Submitted Task", Toast.LENGTH_SHORT).show()
 
-                                val myRef = db.getReference("earnings/$uid")
-                                var finish = false
-                                myRef.runTransaction(object : Transaction.Handler {
-                                    override fun doTransaction(mutableData: MutableData): Transaction.Result {
+                            val myRef = db.getReference("earnings/$uid")
+                            var finish = false
+                            myRef.runTransaction(object : Transaction.Handler {
+                                override fun doTransaction(mutableData: MutableData): Transaction.Result {
 
-                                        mutableData?.value?.let {
-                                            val currentEarning = mutableData.getValue(
-                                                EarningDTO::class.java
+                                    mutableData?.value?.let {
+                                        val currentEarning = mutableData.getValue(
+                                            EarningDTO::class.java
+                                        )
+                                        val newEarning = currentEarning?.copy(
+                                            total_pending = currentEarning.total_pending?.plus(
+                                                taskIntent?.task_earning_price!!
                                             )
-                                            val newEarning = currentEarning?.copy(
-                                                total_pending = currentEarning.total_pending?.plus(
-                                                    taskIntent?.task_earning_price!!
-                                                )
-                                            )
-                                            Log.d(
-                                                "mutableData:",
-                                                "$mutableData \n CE $currentEarning \n NE: $newEarning"
-                                            )
-                                            mutableData?.value = newEarning
-                                            finish = true
-                                        }
-                                        return Transaction.success(mutableData)
-
+                                        )
+                                        Log.d(
+                                            "mutableData:",
+                                            "$mutableData \n CE $currentEarning \n NE: $newEarning"
+                                        )
+                                        mutableData?.value = newEarning
+                                        finish = true
                                     }
+                                    return Transaction.success(mutableData)
 
-                                    override fun onComplete(
-                                        databaseError: DatabaseError?,
-                                        committed: Boolean,
-                                        currentData: DataSnapshot?
-                                    ) {
-                                        if (databaseError != null) {
-                                            Log.d("Firebase", "Transaction failed")
-                                        } else {
-                                            if (finish) {
-                                                progressDialog.dismiss()
-                                                finish()
-                                            }
+                                }
 
-                                            Toast.makeText(
-                                                this@SubmitTaskActivity,
-                                                "Approved Earning",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                override fun onComplete(
+                                    databaseError: DatabaseError?,
+                                    committed: Boolean,
+                                    currentData: DataSnapshot?
+                                ) {
+                                    if (databaseError != null) {
+                                        Log.d("Firebase", "Transaction failed")
+                                    } else {
+                                        if (finish) {
+                                            progressDialog.dismiss()
+                                            finish()
                                         }
+
+                                        Toast.makeText(
+                                            this@SubmitTaskActivity,
+                                            "Approved Earning",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
-                                })
+                                }
+                            })
 
                         }
                         .addOnFailureListener { e ->

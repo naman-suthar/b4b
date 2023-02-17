@@ -94,6 +94,7 @@ class EnterPhoneActivity : AppCompatActivity() {
             // 2 - Auto-retrieval. On some devices Google Play services can automatically
             //     detect the incoming verification SMS and perform verification without
             //     user action.
+            Log.d("FB", "OnCompletion: ${credential}")
             signInWithPhoneAuthCredential(credential)
         }
 
@@ -103,10 +104,10 @@ class EnterPhoneActivity : AppCompatActivity() {
 
             if (e is FirebaseAuthInvalidCredentialsException) {
                 // Invalid request
-                Log.d("TAG", "onVerificationFailed: ${e.toString()}")
+                Log.d("FB", "onVerificationFailed: ${e.toString()}")
             } else if (e is FirebaseTooManyRequestsException) {
                 // The SMS quota for the project has been exceeded
-                Log.d("TAG", "onVerificationFailed: ${e.toString()}")
+                Log.d("FB", "onVerificationFailed: ${e.message}")
             }
             binding.phoneProgressBar.visibility = View.VISIBLE
             // Show a message and update the UI

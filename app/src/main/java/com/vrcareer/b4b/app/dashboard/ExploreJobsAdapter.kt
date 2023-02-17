@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.google.android.material.card.MaterialCardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -36,6 +38,7 @@ class ExploreJobsAdapter(
         val currJob = joblist[position]
         holder.jobTitle.text = currJob.job_title
         holder.jobTagline.text = currJob.job_tagline
+        holder.jobIcon.load(currJob.job_icon)
         holder.btnView.setOnClickListener {
             onCardClicked(currJob)
         }
@@ -49,6 +52,7 @@ class ExploreJobsAdapter(
         val jobTagline: TextView = view.findViewById(R.id.txt_tagline)
         val btnView: Button = view.findViewById(R.id.btn_view_job)
         val mcJob: MaterialCardView = view.findViewById(R.id.mc_explore_job)
+        val jobIcon: ImageView = view.findViewById(R.id.job_icon)
     }
 
    /* fun fetchJobIsAppliedOrNot(jobId: String?): Boolean {

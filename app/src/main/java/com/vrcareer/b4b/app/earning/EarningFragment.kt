@@ -206,7 +206,7 @@ class EarningFragment : Fragment() {
             amount = amount,
             time_of_request = System.currentTimeMillis(),
             status = "pending",
-            userName =   auth.currentUser!!.uid
+            userName = (context?.applicationContext as MyApplication).userUniv?.name
         )
         db.reference.child("withdraw_request")
             .child("${auth.currentUser?.uid}")

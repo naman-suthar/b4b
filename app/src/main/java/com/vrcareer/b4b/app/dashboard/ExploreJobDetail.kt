@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.vrcareer.b4b.app.Constants
 import com.vrcareer.b4b.databinding.ActivityExploreJobDetailBinding
+import com.vrcareer.b4b.model.Job
 
 class ExploreJobDetail : AppCompatActivity() {
 
@@ -16,6 +17,7 @@ class ExploreJobDetail : AppCompatActivity() {
 private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseDatabase.getInstance()
     private lateinit var binding: ActivityExploreJobDetailBinding
+    private var JOB: Job? = null
     private var JOB_ID: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,10 @@ private val auth = FirebaseAuth.getInstance()
         setContentView(binding.root)
 
         if (intent!=null){
-            JOB_ID = intent.getStringExtra("job_id")
+            JOB = intent.getSerializableExtra("job") as Job
+            JOB_ID = JOB?.job_id
+            val job_description = JOB?.job_description
+            binding?.jobDescription?.text = job_description?.replace("""\\n""","\n")
             JOB_ID?.let {
                 db.reference.child(Constants.USER_JOB_APPLICATION_PATH_ROOT).child(it)
                     .child("pending").child("${auth.currentUser?.uid}")
@@ -70,7 +75,7 @@ private val auth = FirebaseAuth.getInstance()
 
         binding.btnFillApplicationForm.setOnClickListener {
             val intent = Intent(this,ExploreJobApplicatonFormActivity::class.java)
-            intent.putExtra("job_id",JOB_ID)
+            intent.putExtra("job",JOB)
             startActivity(intent)
         }
         /*setSupportActionBar(binding.toolbar)

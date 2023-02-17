@@ -13,7 +13,7 @@
         <item>Male</item>
         <item>Female</item>
         <item>Transgender</item>
-<!--        <item>Prefer not to say</item>-->
+        <!--        <item>Prefer not to say</item>-->
 
     </string-array>
     <string name="title_activity_explore_job_detail">ExploreJobDetail</string>
@@ -29,7 +29,7 @@
     </string>
     <string name="airtel_question1">Do you have an android phone?</string>
     <string name="airtel_question2">Do you have a Two wheeler?</string>
-    <string name="airtel_question3">Do you have a driving licence?</string>g>
+    <string name="airtel_question3">Do you have a driving licence?</string>
     <string name="airtel_question4">Do you have experience in Sales?</string>
     <string name="privacy_policy_first_para">At Brand4Brands, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Brand4Brands and how we use it.\nIf you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</string>
     <string name="privacy_policy_log_file_content">Brand4Brands follows a standard procedure of using log files. These files log visitors when they use app. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the app, tracking users\' movement on the app, and gathering demographic information.</string>

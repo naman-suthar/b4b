@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_profileHomeFragment_to_termsAndConditionFragment"
             app:destination="@id/termsAndConditionFragment" />
+        <action
+            android:id="@+id/action_profileHomeFragment_to_withdrawHistoryFragment"
+            app:destination="@id/withdrawHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -81,6 +84,15 @@
         tools:layout="@layout/fragment_terms_and_condition" >
         <action
             android:id="@+id/action_termsAndConditionFragment_to_profileHomeFragment"
+            app:destination="@id/profileHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/withdrawHistoryFragment"
+        android:name="com.vrcareer.b4b.app.profile.WithdrawHistoryFragment"
+        android:label="fragment_withdraw_history"
+        tools:layout="@layout/fragment_withdraw_history" >
+        <action
+            android:id="@+id/action_withdrawHistoryFragment_to_profileHomeFragment"
             app:destination="@id/profileHomeFragment" />
     </fragment>
 </navigation>

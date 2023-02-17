@@ -71,38 +71,42 @@ class EnterOtpActivity : AppCompatActivity() {
                 if (typedOTP.length == 6) {
                     if (typedOTP== "123456"&& phoneNumber == "1342500000"){
                         auth.signInWithEmailAndPassword("namansuthar12345@gmail.com","123456").addOnSuccessListener {
-
-                        }
-                        val userID = "6nMkjqTOBqeAj7tQP2Qhjvnobpm1"
-                        Toast.makeText(this, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
-                        val createUserInDB = User(
-                            id = userID,
-                            /* qualification = null,
-                             additionalInfo = null,
-                             approved_jobs = null,
-                             hasRegistered = false*/
-                        )
-                        var isUserCreated:Boolean = false
-                        db.reference.child("users/${userID}").get().addOnSuccessListener {
-                            if (it.exists()) {
-                                isUserCreated = true
+                            val userID = auth.currentUser!!.uid
+                            Toast.makeText(this, "Authenticate Successfully", Toast.LENGTH_SHORT).show()
+                            val createUserInDB = User(
+                                id = userID,
+                                email = "test@test.com",
+                                dob = "20/04/2000",
+                                gender = "Male",
+                                phoneNo = "1342500000"
+                                /* qualification = null,
+                                 additionalInfo = null,
+                                 approved_jobs = null,
+                                 hasRegistered = false*/
+                            )
+                            var isUserCreated:Boolean = false
+                            db.reference.child("users/${userID}").get().addOnSuccessListener {
+                                if (it.exists()) {
+                                    isUserCreated = true
 //                                val userInDb = it.getValue(User::class.java)
 //                                if (userInDb?.hasRegistered == true){
                                     startActivity(Intent(this, HomeActivity::class.java))
                                     finish()
-                               /* } else  {
+                                    /* } else  {
+                                         startActivity(Intent(this, RegisterActivity::class.java))
+                                         finish()
+                                     }*/
+                                }
+
+                            }.continueWith {
+                                if (!isUserCreated){
+                                    db.reference.child("users").child(userID).setValue(createUserInDB)
                                     startActivity(Intent(this, RegisterActivity::class.java))
                                     finish()
-                                }*/
-                            }
-
-                        }.continueWith {
-                            if (!isUserCreated){
-                              db.reference.child("users").child(userID).setValue(createUserInDB)
-                                startActivity(Intent(this, RegisterActivity::class.java))
-                                finish()
+                                }
                             }
                         }
+
                     }
                     else{
                         val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(

@@ -142,7 +142,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>-->
-                <com.google.android.material.card.MaterialCardView
+               <!-- <com.google.android.material.card.MaterialCardView
                     style="@style/Widget.Material3.CardView.Filled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,7 +175,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:minLines="2"
                                 android:maxLines="5"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -191,7 +191,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -228,7 +228,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:minLines="2"
                                 android:maxLines="5"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -244,7 +244,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -280,7 +280,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:maxLength="15"
                                 />
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -296,7 +296,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -330,7 +330,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:inputType="text"
                                 android:maxLines="1" />
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -346,7 +346,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -381,7 +381,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:maxLines="1"
                                />
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -397,7 +397,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -432,7 +432,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                android:maxLines="1"
                                 android:maxLength="6"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -448,7 +448,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -485,7 +485,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -501,7 +501,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -536,7 +536,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                                 android:scrollbars="vertical"
                                 android:maxLines="1"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -552,7 +552,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -625,7 +625,7 @@ tools:context=".app.tasks.component.SubmitTaskActivity">
                             android:id="@+id/btn_add_photo_qr"
                             />
                     </LinearLayout>
-                </LinearLayout>
+                </LinearLayout>-->
                 <!--<androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

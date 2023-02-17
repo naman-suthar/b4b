@@ -31,7 +31,12 @@ tools:context=".app.tasks.component.AssessmentActivity">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll_form_container"/>
+      <!--  <com.google.android.material.card.MaterialCardView
             style="@style/Widget.Material3.CardView.Filled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -373,7 +378,7 @@ tools:context=".app.tasks.component.AssessmentActivity">
 
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>-->
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"

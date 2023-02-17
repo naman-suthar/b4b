@@ -27,6 +27,9 @@ class MyApplication: Application() {
                 if (it.exists()){
                     userUniv = it.getValue(User::class.java)
                 }
+                else{
+                    auth.currentUser?.delete()
+                }
             }
         }
         DynamicColors.applyToActivitiesIfAvailable(this)

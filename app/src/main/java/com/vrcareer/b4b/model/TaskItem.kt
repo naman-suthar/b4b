@@ -5,7 +5,14 @@ data class TaskItem(
     var jobId: String? = null,
     var task_title: String? = null,
     var task_tagline:String? = null,
-    var task_earning_price: Int? = null
+    var task_earning_price: Int? = null,
+    var screeningQuestions: List<Question>? = null,
+    var assessmentQuestions: List<Question>? = null,
+    var task_steps_to_follow: String? = null,
+    var task_guidelines: String? = null,
+    var task_note: String? = null,
+    var training_note: String? = null,
+    var training_video_ID: String? = null
 ):java.io.Serializable
 
 fun getAirtelTask():TaskItem{

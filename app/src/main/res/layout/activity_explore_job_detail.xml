@@ -39,10 +39,10 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/job_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="@string/airtel_jd_para1"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
 
                 <TextView

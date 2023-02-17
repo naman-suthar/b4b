@@ -44,7 +44,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="20dp">
-
+<!--
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Widget.Material3.CardView.Filled"
                     android:layout_width="match_parent"
@@ -388,7 +388,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                 <!--       <com.google.android.material.textfield.TextInputLayout
+                 &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/et_answer_q9"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                             android:layout_width="match_parent"
@@ -404,7 +404,7 @@
 
                                />
 
-                        </com.google.android.material.textfield.TextInputLayout>-->
+                        </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -441,7 +441,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -457,7 +457,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -494,7 +494,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -510,7 +510,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -547,7 +547,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -563,7 +563,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -600,7 +600,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -616,7 +616,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -653,7 +653,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -669,7 +669,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -706,7 +706,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -722,7 +722,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -759,7 +759,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -775,7 +775,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -812,7 +812,7 @@
                                 android:minLines="3"
                                 android:maxLines="10"/>
                         </com.google.android.material.textfield.TextInputLayout>
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -828,7 +828,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -862,7 +862,7 @@
                                 android:theme="@style/Widget.AppCompat.RatingBar"
                                 android:numStars="5"/>
 
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -878,7 +878,7 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -911,7 +911,7 @@
                             android:theme="@style/Widget.AppCompat.RatingBar"
                             android:numStars="5"/>
 
-                        <!--       <com.google.android.material.textfield.TextInputLayout
+                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
                                    android:id="@+id/et_answer_q9"
                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                                    android:layout_width="match_parent"
@@ -927,10 +927,10 @@
 
                                       />
 
-                               </com.google.android.material.textfield.TextInputLayout>-->
+                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
 
                     </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>-->
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton

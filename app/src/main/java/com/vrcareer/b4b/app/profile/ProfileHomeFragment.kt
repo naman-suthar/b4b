@@ -118,6 +118,10 @@ class ProfileHomeFragment : Fragment() {
             customBuilder.launchUrl(requireContext(), Uri.parse(VR_URI))
 
         }
+        binding?.btnWithdrawalHistory?.setOnClickListener {
+            val action = ProfileHomeFragmentDirections.actionProfileHomeFragmentToWithdrawHistoryFragment()
+            findNavController().navigate(action)
+        }
         return binding?.root
     }
 
