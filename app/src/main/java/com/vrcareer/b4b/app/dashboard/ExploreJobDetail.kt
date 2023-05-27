@@ -11,9 +11,11 @@ import com.vrcareer.b4b.app.Constants
 import com.vrcareer.b4b.databinding.ActivityExploreJobDetailBinding
 import com.vrcareer.b4b.model.Job
 
+/**
+ * This is Job Details Activity
+ * */
 class ExploreJobDetail : AppCompatActivity() {
 
-//    private lateinit var appBarConfiguration: AppBarConfiguration
 private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseDatabase.getInstance()
     private lateinit var binding: ActivityExploreJobDetailBinding
@@ -29,7 +31,11 @@ private val auth = FirebaseAuth.getInstance()
             JOB = intent.getSerializableExtra("job") as Job
             JOB_ID = JOB?.job_id
             val job_description = JOB?.job_description
+            binding?.btnFillApplicationForm?.isEnabled = JOB?.status != "Paused"
             binding?.jobDescription?.text = job_description?.replace("""\\n""","\n")
+            /**
+             * Checking if already our application is in pending status
+             * */
             JOB_ID?.let {
                 db.reference.child(Constants.USER_JOB_APPLICATION_PATH_ROOT).child(it)
                     .child("pending").child("${auth.currentUser?.uid}")
@@ -49,7 +55,9 @@ private val auth = FirebaseAuth.getInstance()
             }
 
         }
-//        Toast.makeText(this, "$JOB_ID", Toast.LENGTH_SHORT).show()
+        /**
+         * Checking If Job is already Approved
+         * */
         auth.currentUser?.uid?.let {
             db.reference.child(Constants.USER_FIREBASE_PATH_ROOT).child(it)
                 .child("approved_jobs")
@@ -78,22 +86,6 @@ private val auth = FirebaseAuth.getInstance()
             intent.putExtra("job",JOB)
             startActivity(intent)
         }
-        /*setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_explore_job_detail)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }*/
-    }
-
-   /* override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_explore_job_detail)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }*/
+   }
 
 }

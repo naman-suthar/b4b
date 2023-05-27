@@ -5,14 +5,19 @@ data class TaskItem(
     var jobId: String? = null,
     var task_title: String? = null,
     var task_tagline:String? = null,
-    var task_earning_price: Int? = null,
+    var price_tagline: String? = null,
+    var task_earning_price: Float? = null,
     var screeningQuestions: List<Question>? = null,
     var assessmentQuestions: List<Question>? = null,
     var task_steps_to_follow: String? = null,
     var task_guidelines: String? = null,
     var task_note: String? = null,
     var training_note: String? = null,
-    var training_video_ID: String? = null
+    var training_video_ID: String? = null,
+    var task_qr_url: String? = null,
+    var price_type: String? = null,
+    var no_of_images_proof: Int? = null,
+    var principal_info_note: String? = null
 ):java.io.Serializable
 
 fun getAirtelTask():TaskItem{
@@ -21,6 +26,7 @@ fun getAirtelTask():TaskItem{
         "IDJ1",
         "Merchant Acquisition",
         "Setup QR Codes",
-        50
+        "xyz",
+        50f
     )
 }

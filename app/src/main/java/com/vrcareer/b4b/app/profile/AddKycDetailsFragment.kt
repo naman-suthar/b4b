@@ -22,7 +22,8 @@ import com.vrcareer.b4b.databinding.FragmentAddKycDetailsBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+/**
+ * Adding KYC Details here*/
 class AddKycDetailsFragment : Fragment() {
 
     private var binding: FragmentAddKycDetailsBinding? = null

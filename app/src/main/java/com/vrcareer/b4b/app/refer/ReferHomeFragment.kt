@@ -16,7 +16,8 @@ import com.google.firebase.dynamiclinks.ktx.*
 import com.google.firebase.ktx.Firebase
 import com.vrcareer.b4b.databinding.FragmentReferHomeBinding
 
-
+/**
+ * Fragment for Refer Tab*/
 class ReferHomeFragment : Fragment() {
     private var binding: FragmentReferHomeBinding? = null
     private  var mInvitationUrl: Uri? = null
@@ -39,14 +40,16 @@ class ReferHomeFragment : Fragment() {
             val shareIntent = Intent.createChooser(sendIntent, null)
             context?.startActivity(shareIntent)
         }*/
-
+/**
+ * Gererating dynamic link
+ * */
         binding?.referFriend?.setOnClickListener {
             val user = Firebase.auth.currentUser!!
             val uid = user.uid
             val invitationLink = "https://www.example.com/?invitedby=$uid"
             Firebase.dynamicLinks.shortLinkAsync {
                 link = Uri.parse(invitationLink)
-                domainUriPrefix = "https://brand4brands.page.link"
+                domainUriPrefix = "https://brand4brandss.page.link"
                 androidParameters("com.vrcareer.b4b") {
 
                 }
@@ -89,17 +92,6 @@ class ReferHomeFragment : Fragment() {
         return binding?.root
     }
 
-    /*private fun generateUriToShare(context: Context,code:String): Uri {
-        val deepLink = "https://www.example.com/refer?referCode=$code"
-
-        val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
-            .setLink(Uri.parse(deepLink))
-            .setDynamicLinkDomain("brand4brands.page.link")
-            .buildDynamicLink()
-
-
-        return dynamicLink.uri
-    }*/
 
 
 }

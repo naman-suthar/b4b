@@ -85,11 +85,11 @@ class RegisterActivity : AppCompatActivity() {
                     if (it.isSuccessful){
                         val blankEarning = EarningDTO(
                             userid = user?.uid,
-                            balance = 0,
-                            total_earning = 0,
-                            total_pending = 0,
-                            total_withdrawal = 0,
-                            pending_withdrawal = 0
+                            balance = 0f,
+                            total_earning = 0f,
+                            total_pending = 0f,
+                            total_withdrawal = 0f,
+                            pending_withdrawal = 0f
                         )
                         db.reference.child("earnings").child(user?.uid.toString()).setValue(blankEarning)
 

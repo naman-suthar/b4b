@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
@@ -21,6 +23,13 @@ import com.vrcareer.b4b.databinding.ActivityClaimReferalsBinding
 import com.vrcareer.b4b.model.EarningDTO
 import com.vrcareer.b4b.model.User
 
+/**
+ * This is Activity where we Show "MY NETWORK"
+ * and claims the earning
+ * */
+
+private const val REFERRAL_EARNING_PRICE = 20
+private const val EARNING_THRESHOLD_FOR_NETWORK_USER = 200
 class ClaimReferalsActivity : AppCompatActivity() {
     private var binding: ActivityClaimReferalsBinding? = null
     private val db = FirebaseDatabase.getInstance()
@@ -35,6 +44,7 @@ class ClaimReferalsActivity : AppCompatActivity() {
             object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
+                        binding?.frameNoUsersInNetwork?.visibility = GONE
                         networkList.clear()
                        for (snap in snapshot.children){
                            val network = snap.getValue(NetworkUserItem::class.java)
@@ -82,8 +92,8 @@ class ClaimReferalsActivity : AppCompatActivity() {
                                             currentData.value?.let {
                                                 val earnings = currentData.getValue(EarningDTO::class.java)
                                                 val newEarnings = earnings?.copy(
-                                                    balance = earnings.balance?.plus(100),
-                                                    total_earning = earnings.total_earning?.plus(100)
+                                                    balance = earnings.balance?.plus(REFERRAL_EARNING_PRICE),
+                                                    total_earning = earnings.total_earning?.plus(REFERRAL_EARNING_PRICE)
                                                 )
                                                 currentData.value = newEarnings
                                                 finish = true
@@ -107,6 +117,9 @@ class ClaimReferalsActivity : AppCompatActivity() {
                             it.layoutManager = LinearLayoutManager(this@ClaimReferalsActivity)
                             it.adapter = adapter
                         }
+                    }
+                    else{
+                        binding?.frameNoUsersInNetwork?.visibility = VISIBLE
                     }
                 }
 
@@ -142,7 +155,7 @@ class NetworkRvAdapter(val context: Context, val networkList: List<NetworkUserIt
                         db.reference.child("earnings").child(it).get().addOnSuccessListener { snapshot->
                             if (snapshot.exists()){
                                 val earning = snapshot.getValue(EarningDTO::class.java)
-                                if (earning?.total_earning!! >=500){
+                                if (earning?.total_earning!! >=EARNING_THRESHOLD_FOR_NETWORK_USER){
                                     var finish = false
                                     db.reference.child("network").child(thisUser?.reffered_by!!).child(thisUser.id!!)
                                         .runTransaction(

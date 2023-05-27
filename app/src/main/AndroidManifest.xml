@@ -17,7 +17,7 @@
         android:roundIcon="@drawable/b4b1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="31">
+        >
         <activity
             android:name=".app.refer.ClaimReferalsActivity"
             android:exported="false">

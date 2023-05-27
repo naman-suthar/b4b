@@ -26,6 +26,15 @@ import com.vrcareer.b4b.model.EarningDTO
 import com.vrcareer.b4b.model.User
 import org.w3c.dom.Text
 
+/**
+ * This is Fragment which appears first when Profile tab is clicked It contains all the Options
+ * like
+ * EarningDetails,
+ *  KYCDetails ,
+ *  Visit Profile,
+ *  App content,
+ *  Sign Out
+ * */
 class ProfileHomeFragment : Fragment() {
     private var binding: FragmentProfileHomeBinding? = null
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()

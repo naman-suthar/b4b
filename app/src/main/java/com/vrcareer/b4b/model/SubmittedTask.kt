@@ -5,7 +5,7 @@ data class SubmittedTask(
     var uid: String? = null,
     var taskId: String? = null,
     var jobId:String? = null,
-    var associated_amount: Int? = null,
+    var associated_amount: Float? = null,
     var imageList: List<String>? = null,
     var time_of_submission: Long? = null,
     var time_of_approval: Long? = null,

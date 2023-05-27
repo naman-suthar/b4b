@@ -107,6 +107,10 @@ val degreePrograms = listOf(
     "Bachelor of Science (B.Sc)",
     "Bachelor of Education (B.Ed)"
 )
+
+/**
+ * This is Visit Profile Fragment
+ * here we display User's Profile*/
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private var storage = Firebase.storage

@@ -17,7 +17,9 @@ import com.vrcareer.b4b.databinding.FragmentDashBoardBinding
 import com.vrcareer.b4b.model.Job
 import kotlinx.coroutines.awaitAll
 
-
+/**
+ * It is Jobs List Fragment in Explore Tab
+ * It shows all available Jobs */
 class DashBoardFragment : Fragment() {
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var db: FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -35,26 +37,11 @@ class DashBoardFragment : Fragment() {
 
         fetchJobListandShowItToRV()
 
-
-        /*binding?.btnUploadJobs?.setOnClickListener {
-            for (jobs in Job_List){
-                jobs.job_id?.let { id ->
-                    db.reference.child(Constants.JOBS_FIREBASE_PATH_ROOT).child(
-                        id
-                    ).setValue(jobs).addOnSuccessListener {
-                        Toast.makeText(requireContext(),"${jobs.job_id} successfully uploaded",Toast.LENGTH_SHORT).show()
-                    }
-                        .addOnFailureListener {
-                            Toast.makeText(requireContext(),"${jobs.job_id} failed to upload",Toast.LENGTH_SHORT).show()
-
-                        }
-                }
-            }
-
-        }*/
         return binding.root
     }
 
+    /**
+     * Fetching Jobs from firebase database and updating Recycler VIew*/
     private fun fetchJobListandShowItToRV() {
         db.reference.child(Constants.JOBS_FIREBASE_PATH_ROOT).get().addOnSuccessListener {
             if (it.exists()) {

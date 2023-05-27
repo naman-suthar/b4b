@@ -1,12 +1,14 @@
 package com.vrcareer.b4b.model
 
+import android.view.ViewDebug.FlagToString
+
 data class EarningDTO(
     var userid: String? = null,
-    var balance: Int? = null,
-    var total_earning: Int? = null,
-    var total_pending: Int? = null,
-    var total_withdrawal: Int? = null,
-    var pending_withdrawal:Int? = null,
+    var balance: Float? = null,
+    var total_earning: Float? = null,
+    var total_pending: Float? = null,
+    var total_withdrawal: Float? = null,
+    var pending_withdrawal:Float? = null,
     var withdrawalHistory: MutableList<WithdrawalRequest>? = null,
 
 )

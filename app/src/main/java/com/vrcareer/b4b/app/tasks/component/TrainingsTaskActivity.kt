@@ -2,7 +2,11 @@ package com.vrcareer.b4b.app.tasks.component
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import coil.size.ViewSizeResolver
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,6 +40,7 @@ class TrainingsTaskActivity : AppCompatActivity() {
             val task = intent.getSerializableExtra("task") as TaskItem
             binding?.txtTrainingMessage?.text = task.training_note
            binding?.youtubePlayerView?.enableAutomaticInitialization = false
+
             binding?.youtubePlayerView?.initialize(object : AbstractYouTubePlayerListener(){
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     val videoId = task.training_video_ID
@@ -45,6 +50,11 @@ class TrainingsTaskActivity : AppCompatActivity() {
 
                 }
             })
+            task.task_qr_url?.let {
+                Log.d("Task", "${task.task_qr_url}")
+//                binding?.imgQr?.visibility = View.VISIBLE
+                binding?.imgQr?.let { it1 -> Glide.with(this).load(it).into(it1) }
+            }
             db.reference.child("trainings").child(auth.currentUser!!.uid).child(task?.taskId!!).addValueEventListener(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {

@@ -19,13 +19,18 @@ import com.vrcareer.b4b.app.tasks.TaskHomeFragment
 import com.vrcareer.b4b.databinding.ActivityHomeBinding
 import com.vrcareer.b4b.model.User
 
+/**
+ * This is the Main Home Activity that contains Bottom Navigation Bar and the All the fragments
+ * @property DashBoardFragment -> Explore Tab
+ * @property TaskHomeFragment -> Tasks Tab
+ * @property ReferHomeFragment -> Refer and Earn Tab
+ * @property EarningFragment -> Earning Tab
+ * @property ProfileContainerFragment -> Profile Tab*/
+
 class HomeActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
     private val db = FirebaseDatabase.getInstance()
     private lateinit var binding: ActivityHomeBinding
-    private var VR_URI =
-        "https://app.pyjamahr.com/careers?company=VRCareerz&company_uuid=60D280017E&isHeaderVisible=true&is_careers_page=true"
-    private var package_name = "com.android.chrome"
 
     override fun onStart() {
         super.onStart()
@@ -42,9 +47,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
-        /* if ((this.application as MyApplication).userUniv == null){
-             (this.application as MyApplication).userUniv =  auth.currentUser
-         }*/
         handelDynamicLinks()
         loadFragment(DashBoardFragment())
         binding.bottomNav.setOnItemSelectedListener {
@@ -115,11 +117,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
+    /**
+     * Handling Dynamic link Sharing and adding to Network
+     * */
     private fun handelDynamicLinks() {
         FirebaseDynamicLinks.getInstance()
             .getDynamicLink(intent)
             .addOnSuccessListener(this) { pendingDynamicLinkData ->
-                // Get deep link from result (may be null if no link is found)
                 var deepLink: Uri? = null
                 if (pendingDynamicLinkData != null) {
                     deepLink = pendingDynamicLinkData.link
@@ -135,19 +139,15 @@ class HomeActivity : AppCompatActivity() {
     private fun handleDeepLink(deepLink: Uri?) {
         if (deepLink != null) {
             val path = deepLink.path
-            Log.d("Deep:", "$deepLink")
-
             val referredUid = deepLink.getQueryParameter("invitedby")
-            Log.d("NetworkDeep:", "$referredUid")
             if (referredUid != null) {
                 val currUser = auth.currentUser!!.uid
-                val referalItem = NetworkUserItem(
-                    id = currUser,
-                    status = "noob"
-                )
-//                if (referredUid != currUser){
 
-
+                if (referredUid != currUser){
+                    val referalItem = NetworkUserItem(
+                        id = currUser,
+                        status = "noob"
+                    )
                 var finish = false
                 db.reference.child("users").child(currUser).runTransaction(
                     object : Transaction.Handler {
@@ -195,7 +195,7 @@ class HomeActivity : AppCompatActivity() {
                 )
 
 
-//                }
+                }
 
                 /*.runTransaction(
                     object : Transaction.Handler{
@@ -222,12 +222,15 @@ class HomeActivity : AppCompatActivity() {
             }
 
             // Take appropriate action with the profile name
-            Toast.makeText(this, "referred by $referredUid", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "referred by $referredUid", Toast.LENGTH_SHORT).show()
 
         }
 
     }
 
+    /**
+     * Load Fragment on tabs switch from BottomNav
+     * */
     private fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)

@@ -35,21 +35,29 @@
                 android:layout_height="wrap_content"
                 android:text="Job_Title"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.Material3.LabelMedium" />
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
+            <TextView
+                android:id="@+id/tv_active_job_task_price_tagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRICE TAGLINE"
+                android:layout_marginTop="2dp"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
         </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
-        <TextView
+       <!-- <TextView
             android:id="@+id/tv_earn_from_task"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="\u20B9 50"/>
+            android:text="\u20B9 50"/>-->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_earn_task"
             android:layout_width="wrap_content"

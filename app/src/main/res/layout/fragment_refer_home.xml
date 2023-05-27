@@ -35,7 +35,7 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
-            android:text="\u20b9100/Referral"
+            android:text="\u20b920/Recruit"
             android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
             android:textStyle="bold" />
 
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:gravity="center"
-            android:text="Refer your friends to earn \u20b9100 per referral"
+            android:text="Refer your friends to earn \u20b920 per recruit"
             android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
 
     </LinearLayout>
@@ -56,7 +56,7 @@
         android:layout_gravity="center|bottom"
         android:paddingHorizontal="32dp"
         android:paddingVertical="16dp"
-        android:text="Refer a friend"
+        android:text="Start Recruiting"
         app:icon="@drawable/refer"
         app:iconPadding="16dp" />
 
@@ -68,7 +68,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/aclonica"
         android:paddingVertical="16dp"
-        android:text="Claim Earning"
+        android:text="Claim Earnings"
         app:icon="@drawable/ic_arrow_forward"
         app:iconGravity="end" />
 </LinearLayout>

@@ -1,657 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".app.tasks.component.SubmitTaskActivity">
-
-<com.google.android.material.appbar.AppBarLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar_location"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="10dp"
-        app:title="Merchant onboarding details"
-        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
-</com.google.android.material.appbar.AppBarLayout>
-
-<androidx.core.widget.NestedScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="16dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    tools:context=".app.tasks.component.SubmitTaskActivity">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar_location"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="10dp"
+            app:title="Merchant onboarding details"
+            app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".app.tasks.component.SubmitTaskActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".app.tasks.component.SubmitTaskActivity">
+
             <LinearLayout
-                android:id="@+id/ll_questionare"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-             <!--   <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sales Manager"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="text" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>-->
-               <!-- <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="FOS name"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="textMultiLine"
-                                android:gravity="top|start"
-                                android:scrollbars="vertical"
-                                android:minLines="2"
-                                android:maxLines="4"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>-->
-               <!-- <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Shop Name"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="textMultiLine"
-                                android:gravity="top|start"
-                                android:scrollbars="vertical"
-                                android:minLines="2"
-                                android:maxLines="5"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Shop owner name"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="textMultiLine"
-                                android:gravity="top|start"
-                                android:scrollbars="vertical"
-                                android:minLines="2"
-                                android:maxLines="5"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Onboarding business owner no"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="number"
-                                android:maxLines="1"
-                                android:maxLength="15"
-                                />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="City"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="text"
-                                android:maxLines="1" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="State"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="text"
-                                android:maxLines="1"
-                               />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pincode"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="number"
-                               android:maxLines="1"
-                                android:maxLength="6"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Address"
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="textMultiLine"
-                                android:gravity="top|start"
-                                android:scrollbars="vertical"
-                                android:minLines="3"
-                                android:maxLines="10"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Widget.Material3.CardView.Filled"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <TextView
-                            android:tag="tv_question"
-                            android:id="@+id/tv_q10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Transaction amount "
-                            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:tag="et_ans"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:inputType="number"
-                                android:scrollbars="vertical"
-                                android:maxLines="1"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                        &lt;!&ndash;       <com.google.android.material.textfield.TextInputLayout
-                                   android:id="@+id/et_answer_q9"
-                                   style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="wrap_content"
-                                   android:layout_marginTop="4dp">
-
-                                   <com.google.android.material.textfield.TextInputEditText
-                                       android:tag="et_ans"
-                                       android:id="@+id/dropdown_menu_ans9"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="wrap_content"
-                                       android:inputType="text"
-
-                                      />
-
-                               </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
                 <LinearLayout
-                    android:layout_marginTop="12dp"
+                    android:id="@+id/ll_questionare"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Transaction Proof"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            />
-                        <ImageView
-                            android:id="@+id/img_transaction_proof_submit_task"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/profile_placeholder"
-                            />
-                        <com.google.android.material.button.MaterialButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Add Photo"
-                            app:icon="@drawable/ic_baseline_add_24"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="20dp"
-                            android:id="@+id/btn_add_photo_transaction"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Qr Code Photo"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            />
-                        <ImageView
-                            android:id="@+id/img_qr_code_submit_task"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/profile_placeholder"
-                            />
-                        <com.google.android.material.button.MaterialButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Add Photo"
-                            app:icon="@drawable/ic_baseline_add_24"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="20dp"
-                            android:id="@+id/btn_add_photo_qr"
-                            />
-                    </LinearLayout>
-                </LinearLayout>-->
-                <!--<androidx.recyclerview.widget.RecyclerView
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mc_principal_note"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:visibility="gone">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rv_images_selected"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginHorizontal="20dp"
-                    />-->
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Note"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                    <TextView
+                        android:id="@+id/txt_pm_note"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Note here"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="?attr/colorPrimary"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Earned Amount"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+                    <TextView
+                        android:id="@+id/txt_earned_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="\u20b90"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="?attr/colorPrimary"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_submit_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="@color/green_approved"
+                android:paddingVertical="14dp"
+                android:text="Submit Task" />
         </LinearLayout>
 
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit Task"
-            android:paddingVertical="14dp"
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center|bottom"
-            android:layout_marginBottom="24dp"
-            android:id="@+id/btn_submit_task"
-            android:backgroundTint="@color/green_approved"
-            />
-    </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 

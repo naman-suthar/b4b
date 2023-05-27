@@ -22,6 +22,9 @@ import com.vrcareer.b4b.app.earning.convertLongToTime
 import com.vrcareer.b4b.databinding.FragmentWithdrawHistoryBinding
 import com.vrcareer.b4b.model.WithdrawalRequest
 
+/**
+ * This is withdrawal History Fragment and we are fetching hostory and showing using recycler view
+ * */
 class WithdrawHistoryFragment : Fragment() {
 
     private var binding: FragmentWithdrawHistoryBinding? = null

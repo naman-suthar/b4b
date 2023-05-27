@@ -38,8 +38,8 @@ class EnterOtpActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        registerBroadCast()
-        startSmartUserConsent()
+       /* registerBroadCast()
+        startSmartUserConsent()*/
     }
 
 
@@ -192,7 +192,7 @@ class EnterOtpActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        unregisterReceiver(otpBroadCastReceiver)
+//        unregisterReceiver(otpBroadCastReceiver)
     }
     private fun resendOTPTvVisibility() {
         binding.otpEditText1.setText("")

@@ -19,6 +19,10 @@ import com.vrcareer.b4b.databinding.ActivitySubmittedTasksBinding
 import com.vrcareer.b4b.model.SubmittedTask
 import okhttp3.internal.filterList
 
+/**
+ * This is Submitted Tasks Activity
+ * and we are fetching the tasks and filtering them on Tabs item clicked
+ * */
 class SubmittedTasksActivity : AppCompatActivity() {
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var db: FirebaseDatabase = FirebaseDatabase.getInstance()

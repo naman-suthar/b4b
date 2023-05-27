@@ -19,6 +19,10 @@ import com.vrcareer.b4b.R
 import com.vrcareer.b4b.app.Constants
 import com.vrcareer.b4b.model.Job
 
+/**
+* Jobs List Recycler View Adapter
+ * @param joblist = List of Jobs
+ * @param onCardClicked = Event when user clicks on job item*/
 class ExploreJobsAdapter(
     context: Context,
     var joblist: MutableList<Job>,
@@ -39,6 +43,13 @@ class ExploreJobsAdapter(
         holder.jobTitle.text = currJob.job_title
         holder.jobTagline.text = currJob.job_tagline
         holder.jobIcon.load(currJob.job_icon)
+
+        if (currJob.status == "Paused"){
+            holder.btnView.text = "${currJob.status}"
+
+        }else{
+            holder.btnView.text = "View"
+        }
         holder.btnView.setOnClickListener {
             onCardClicked(currJob)
         }
@@ -53,23 +64,7 @@ class ExploreJobsAdapter(
         val btnView: Button = view.findViewById(R.id.btn_view_job)
         val mcJob: MaterialCardView = view.findViewById(R.id.mc_explore_job)
         val jobIcon: ImageView = view.findViewById(R.id.job_icon)
+
     }
 
-   /* fun fetchJobIsAppliedOrNot(jobId: String?): Boolean {
-        var res = false
-        if (jobId != null) {
-
-            db.reference.child(Constants.USER_JOB_APPLICATION_PATH_ROOT).child(jobId)
-                .child("pending").child("${auth.currentUser?.uid}")
-                .get().addOnSuccessListener {
-
-                    if (it.exists()){
-                        res = true
-                        Log.d("ResultSuccess:","True")
-                    }
-                }
-        }
-
-        return res
-    }*/
 }

@@ -12,7 +12,8 @@ data class Job(
     var associatedTasks: List<TaskItem>? = null,
     var screeningQuestions: List<Question>? = null,
     var applied: Boolean? = null,
-    var job_icon: String? = null
+    var job_icon: String? = null,
+    var status: String? = null
 ): java.io.Serializable
 
 fun getAirtelJob(): Job{

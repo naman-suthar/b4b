@@ -20,7 +20,8 @@ import com.vrcareer.b4b.app.Constants.UPI_MODE
 import com.vrcareer.b4b.databinding.FragmentAddPaymentMethodBinding
 import com.vrcareer.b4b.model.PaymentDetails
 
-
+/**
+ * Adding Payment Details here */
 class AddPaymentMethodFragment : Fragment() {
     private var binding: FragmentAddPaymentMethodBinding? = null
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()

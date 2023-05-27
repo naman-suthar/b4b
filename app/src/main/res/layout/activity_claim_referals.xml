@@ -37,6 +37,19 @@ tools:context=".app.refer.ClaimReferalsActivity">
           android:layout_height="match_parent"
           android:id="@+id/rv_my_network"/>
 
+        <FrameLayout
+            android:id="@+id/frame_no_users_in_network"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="No users in your network"
+                />
+        </FrameLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

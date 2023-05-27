@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,19 +20,23 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.Transaction
-import com.vrcareer.b4b.MainActivity
 import com.vrcareer.b4b.MyApplication
 import com.vrcareer.b4b.R
 import com.vrcareer.b4b.app.Constants
 import com.vrcareer.b4b.databinding.FragmentEarningBinding
 import com.vrcareer.b4b.model.*
+import com.vrcareer.b4b.utils.TaskEarningType
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+/**
+ * This is Fragment of Earning Tab
+ * */
 class EarningFragment : Fragment() {
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var db: FirebaseDatabase = FirebaseDatabase.getInstance()
-    private var availableToWithdraw: Int? = null
+    private var availableToWithdraw: Float? = null
     private var binding: FragmentEarningBinding? = null
     private val taskList = mutableListOf<SubmittedTask>()
     private var adapter: RvEarningHistoryAdapter? = null
@@ -52,6 +55,9 @@ class EarningFragment : Fragment() {
 
         getEarningData()
         getEarningHistory()
+        /**
+         * Checking if user already sent Withdraw request
+         * */
         db.reference.child("withdraw_request").child(auth.currentUser!!.uid).addValueEventListener(
             object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -67,6 +73,9 @@ class EarningFragment : Fragment() {
         binding?.btnWithdraw?.setOnClickListener {
             displayWithdrawDialog()
         }
+        /**
+         * Navigating to Submitted Tasks Activity
+        * */
         binding?.btnSubmissions?.setOnClickListener {
             val intent = Intent(requireActivity(),SubmittedTasksActivity::class.java)
             requireActivity().startActivity(intent)
@@ -74,6 +83,8 @@ class EarningFragment : Fragment() {
         return binding?.root
     }
 
+    /**
+     * Fetching Earning History from database and updating recycler view*/
     private fun getEarningHistory() {
         db.reference.child("submitted_task").child(auth.currentUser?.uid.toString()).addValueEventListener(
             object : ValueEventListener{
@@ -98,6 +109,9 @@ class EarningFragment : Fragment() {
         )
     }
 
+    /**
+     * Fetching Earning data of user from database
+     * */
     private fun getEarningData() {
         db.reference.child("earnings").child(auth.currentUser?.uid.toString()).addValueEventListener(
             object : ValueEventListener{
@@ -109,7 +123,7 @@ class EarningFragment : Fragment() {
                         binding?.let { b->
                             b.tvApprovedAmount.text = "\u20B9${earningDetails?.balance.toString()}"
                             b.tvPendingAmount.text = "₹${earningDetails?.total_pending.toString()}"
-                            availableToWithdraw = earningDetails?.balance?.toInt()
+                            availableToWithdraw = earningDetails?.balance
                         }
                     }else{
                         Toast.makeText(
@@ -127,38 +141,12 @@ class EarningFragment : Fragment() {
                 }
             }
         )
-           /* .addOnSuccessListener {
-                if (it.exists()) {
-                    binding?.frameLoading?.visibility = View.GONE
-                    val earningDetails = it.getValue(EarningDTO::class.java)
-                    Log.d("Earning", "$earningDetails")
-                    binding?.let { b ->
-                        b.tvApprovedAmount.text = "\u20B9${earningDetails?.balance.toString()}"
-                        b.tvPendingAmount.text = "₹${earningDetails?.total_pending.toString()}"
-                        availableToWithdraw = earningDetails?.balance?.toInt()
-                       *//* b.rvEarningHistory.let {rv->
-                            rv.layoutManager = LinearLayoutManager(context)
-                            if (earningDetails != null) {
-                                rv.adapter = context?.let { it1 -> RvEarningHistoryAdapter(it1,
-                                    earningDetails.earningHistory as MutableList<Transaction>
-                                ) }
-                            }
-                        }*//*
-                    }
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Hello Fresher! Complete some task to get delightful earning here",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    binding?.frameLoading?.visibility = View.GONE
-                }
-            }.addOnFailureListener {
-                Toast.makeText(context, "Network Error occurred", Toast.LENGTH_SHORT).show()
-                binding?.frameLoading?.visibility = View.GONE
-            }*/
+
     }
 
+    /**
+     * Withdrawal Request Dialog Box
+     * */
     private fun displayWithdrawDialog() {
         val dialog = MaterialAlertDialogBuilder(requireContext())
         dialog.setTitle("Withdraw Amount")
@@ -187,7 +175,7 @@ class EarningFragment : Fragment() {
                     etAmount.requestFocus()
                     etAmount.error = "Maximum amount is \u20B9$availableToWithdraw"
                 } else {
-                    sendWithdrawRequest(withdrawAmountInputText.toInt())
+                    sendWithdrawRequest(withdrawAmountInputText.toFloat())
 
                     alertDialog.dismiss()
                 }
@@ -199,7 +187,9 @@ class EarningFragment : Fragment() {
         }
     }
 
-    private fun sendWithdrawRequest(amount: Int) {
+    /**
+     * Sending our withdrawal request to database and adding it our history*/
+    private fun sendWithdrawRequest(amount: Float) {
         val request = WithdrawalRequest(
             id = "${auth.currentUser?.uid}${System.currentTimeMillis()}",
             user_id = auth.currentUser?.uid,
@@ -219,7 +209,7 @@ class EarningFragment : Fragment() {
                                 val newEarning = currentEarning?.copy(
                                     pending_withdrawal = currentEarning.pending_withdrawal?.plus(amount)
                                 )
-                                currentData?.value = newEarning
+                                currentData.value = newEarning
 
                             }
 
@@ -250,13 +240,16 @@ class EarningFragment : Fragment() {
 
 }
 
-class RvEarningHistoryAdapter(val context: Context, private var earningHistoryList: MutableList<SubmittedTask>) :
+/**
+ * This Adapter is used for recycler Views dealing with Tasks like Earning History, Submitted Tasks , Pending Tasks etc
+ * @param taskList It is List of Tasks*/
+class RvEarningHistoryAdapter(val context: Context, private var taskList: MutableList<SubmittedTask>) :
     RecyclerView.Adapter<RvEarningHistoryAdapter.EarningListItemViewHolder>() {
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var db: FirebaseDatabase = FirebaseDatabase.getInstance()
 
     fun updateaList(list: MutableList<SubmittedTask>){
-        earningHistoryList = list
+        taskList = list
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EarningListItemViewHolder {
@@ -266,9 +259,12 @@ class RvEarningHistoryAdapter(val context: Context, private var earningHistoryLi
     }
 
     override fun onBindViewHolder(holder: EarningListItemViewHolder, position: Int) {
-        val currEarningTransaction = earningHistoryList[position]
+        val currEarningTransaction = taskList[position]
         val taskId = currEarningTransaction.taskId
         val jobId = currEarningTransaction.jobId
+
+        holder.tvEarningPrice.text = "\u20B9${currEarningTransaction?.associated_amount.toString()}"
+
         if (currEarningTransaction.status == "rejected"){
             holder.btnMessage.visibility = View.VISIBLE
             holder.tvEarningPrice.visibility = View.GONE
@@ -301,7 +297,6 @@ class RvEarningHistoryAdapter(val context: Context, private var earningHistoryLi
                         if (it.exists()) {
                             val task = it.getValue(TaskItem::class.java)
                             holder.tvTaskTitle.text = task?.task_title
-                            holder.tvEarningPrice.text = "\u20B9${task?.task_earning_price.toString()}"
                             holder.frameLoading.visibility = View.GONE
                         }
                     }.addOnFailureListener {
@@ -314,7 +309,7 @@ class RvEarningHistoryAdapter(val context: Context, private var earningHistoryLi
     }
 
 
-    override fun getItemCount(): Int = earningHistoryList.size
+    override fun getItemCount(): Int = taskList.size
 
     class EarningListItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvTaskTitle: TextView = view.findViewById(R.id.tv_earning_task_title)

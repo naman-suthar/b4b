@@ -39,7 +39,11 @@
                 android:layout_margin="16dp"
                 app:autoPlay="false"
                />
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/img_qr"
+                />
             <TextView
                 android:id="@+id/txt_training_message"
                 android:layout_marginHorizontal="16dp"

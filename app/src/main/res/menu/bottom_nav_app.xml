@@ -11,7 +11,7 @@
         android:id="@+id/tab_tasks"
         />
     <item
-        android:title="Refer"
+        android:title="Recruit"
         android:icon="@drawable/ic_refer"
         android:id="@+id/tab_refer"
         />
