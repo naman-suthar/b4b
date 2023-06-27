@@ -20,6 +20,7 @@ import com.vrcareer.b4b.model.Answer
 import com.vrcareer.b4b.model.Assessment
 import com.vrcareer.b4b.model.QuestionType
 import com.vrcareer.b4b.model.TaskItem
+import com.vrcareer.b4b.utils.ApplicationResponse
 
 class AssessmentActivity : AppCompatActivity() {
     private var binding: ActivityAssessmentBinding? = null
@@ -209,7 +210,7 @@ class AssessmentActivity : AppCompatActivity() {
                     task_id = task.taskId,
                     job_id = task.jobId,
                     ansList = answerList,
-                    status = "pending",
+                    status = ApplicationResponse.Pending.name,
                     time_of_request = System.currentTimeMillis()
                 )
 

@@ -92,8 +92,9 @@ class RegisterActivity : AppCompatActivity() {
                             pending_withdrawal = 0f
                         )
                         db.reference.child("earnings").child(user?.uid.toString()).setValue(blankEarning)
-
-                        startActivity(Intent(this,HomeActivity::class.java))
+                        val intent = Intent(this,HomeActivity::class.java)
+                        intent.putExtra("is_from_register",true)
+                        startActivity(intent)
                         finish()
                     } else{
                         Toast.makeText(this,"Please Try after Some time",Toast.LENGTH_SHORT).show()

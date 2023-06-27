@@ -53,13 +53,30 @@
                 android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                 android:text="@string/training_para_info"
                 />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+
+            >
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_start_assessment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="32dp"
                 android:text="Start Assessment" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_message_24"
+                android:id="@+id/btn_rejection_message"
+                android:layout_margin="12dp"
+                android:visibility="gone"
+                />
+        </LinearLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

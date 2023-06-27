@@ -45,97 +45,36 @@
                     android:layout_marginTop="4dp"
                     android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
 
-                <TextView
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+
+                >
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_fill_application_form"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Work Experience"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_marginTop="4dp"
-                    android:layout_width="match_parent"
+                    android:paddingVertical="8dp"
+                    android:text="Apply" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Some field sales experience is preferred, but not necessarily required for entry-level positions"
-/>
-                <TextView
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Communication skills"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_marginTop="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="The ability to communicate effectively with customers."
+                    android:src="@drawable/ic_baseline_message_24"
+                    android:id="@+id/btn_rejection_message"
+                    android:layout_margin="12dp"
+                    android:visibility="gone"
                     />
-                <TextView
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Problem-solving skills"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_marginTop="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Field Executives need to be able to analyze customer needs and find creative solutions to meet those needs."
-                    />
-                <TextView
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Time management skills"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_marginTop="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=" Field Executives need to be able to manage their time effectively, prioritize tasks, and meet deadlines."
-                    />
-                <TextView
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Physical mobility"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_marginTop="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=" Field Executives may need to be physically able to travel to meet with customers."
-                    />
-                <TextView
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Clean driving record"
-                    android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                    android:textStyle="bold" />
-                <TextView
-                    android:layout_marginTop="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="A clean driving record may be required for Field Executives who need to travel for work."
-                    />
+
 
             </LinearLayout>
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_fill_application_form"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
-                android:paddingVertical="8dp"
-                android:text="Apply" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

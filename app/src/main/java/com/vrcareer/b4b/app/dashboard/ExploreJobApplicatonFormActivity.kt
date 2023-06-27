@@ -17,6 +17,7 @@ import com.vrcareer.b4b.app.Constants
 import com.vrcareer.b4b.app.HomeActivity
 import com.vrcareer.b4b.databinding.ActivityExploreJobApplicatonFormBinding
 import com.vrcareer.b4b.model.*
+import com.vrcareer.b4b.utils.ApplicationResponse
 
 
 /**
@@ -158,7 +159,7 @@ class ExploreJobApplicatonFormActivity : AppCompatActivity() {
                     user_id = auth.currentUser?.uid,
                     job_id = job_id,
                     ansList = answerList,
-                    status = "pending",
+                    status = ApplicationResponse.Pending.name,
                     time_of_request = System.currentTimeMillis()
                 )
 
@@ -166,7 +167,7 @@ class ExploreJobApplicatonFormActivity : AppCompatActivity() {
                  * Sending our application to DB*/
                 job_id?.let { it1 ->
                     db.reference.child(Constants.USER_JOB_APPLICATION_PATH_ROOT).child(
-                        "$it1/pending"
+                        it1
                     ).child(auth.currentUser?.uid.toString()).setValue(application)
                         .addOnSuccessListener {
                             Log.d("Uploading:", "$job_id ${auth.currentUser?.uid} $answerList ")

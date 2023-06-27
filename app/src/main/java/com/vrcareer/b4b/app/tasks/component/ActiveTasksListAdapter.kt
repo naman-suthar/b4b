@@ -1,6 +1,7 @@
 package com.vrcareer.b4b.app.tasks.component
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.vrcareer.b4b.R
 import com.vrcareer.b4b.model.TaskItem
 import com.vrcareer.b4b.utils.TaskEarningType
@@ -21,6 +23,7 @@ class ActiveTasksListAdapter(context: Context, var activeTasksList:List<TaskItem
 
     override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int) {
         val currTask = activeTasksList[position]
+        Log.d("Checking Tasks","$currTask")
         holder.taskTitle.text = currTask.task_title
         holder.taskTagline.text = currTask.task_tagline
         holder.taskPriceTagline.text = currTask.price_tagline ?: "Price tagline here"
@@ -29,6 +32,9 @@ class ActiveTasksListAdapter(context: Context, var activeTasksList:List<TaskItem
         }else{
             holder.tvEarnMoney.text = "\u20B9 ${currTask.task_earning_price}"
         }*/
+        currTask.jobLogo?.let {
+            holder.imgLogo.load(it)
+        }
 
         holder.btnEarn.setOnClickListener {
             onEarnButtonClicked(currTask)
@@ -38,7 +44,7 @@ class ActiveTasksListAdapter(context: Context, var activeTasksList:List<TaskItem
     override fun getItemCount(): Int = activeTasksList.size
 
     class TaskItemViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val imgLog: ImageView = view.findViewById(R.id.img_logo_active_job)
+        val imgLogo: ImageView = view.findViewById(R.id.img_logo_active_job)
         val taskTitle: TextView = view.findViewById(R.id.tv_active_job_title)
         val taskTagline: TextView = view.findViewById(R.id.tv_active_job_task_tagline)
 //        val tvEarnMoney: TextView = view.findViewById(R.id.tv_earn_from_task)

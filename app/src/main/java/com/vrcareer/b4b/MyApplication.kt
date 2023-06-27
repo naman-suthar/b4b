@@ -1,8 +1,6 @@
 package com.vrcareer.b4b
 
 import android.app.Application
-import android.content.Intent
-import com.google.android.material.color.DynamicColors
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.vrcareer.b4b.model.User
@@ -32,6 +30,6 @@ class MyApplication: Application() {
                 }
             }
         }
-        DynamicColors.applyToActivitiesIfAvailable(this)
+
     }
 }

@@ -142,8 +142,8 @@ class HomeActivity : AppCompatActivity() {
             val referredUid = deepLink.getQueryParameter("invitedby")
             if (referredUid != null) {
                 val currUser = auth.currentUser!!.uid
-
-                if (referredUid != currUser){
+                val isFromRegister = intent.getBooleanExtra("is_from_register",false)
+                if (referredUid != currUser && isFromRegister){
                     val referalItem = NetworkUserItem(
                         id = currUser,
                         status = "noob"

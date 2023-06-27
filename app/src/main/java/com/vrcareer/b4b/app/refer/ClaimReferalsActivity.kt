@@ -144,14 +144,19 @@ class NetworkRvAdapter(val context: Context, val networkList: List<NetworkUserIt
 
     override fun onBindViewHolder(holder: NetworkItemViewHolder, position: Int) {
         val currNetworkId = networkList[position]
-
+        Log.d("ClaimEarning","${currNetworkId.id}")
         currNetworkId.id?.let {
-            db.reference.child("users").child(it).get().addOnSuccessListener {snapshot->
+            db.reference.child("users").child(it.trim()).get().addOnSuccessListener {snapshot->
+                    Log.d("ClaimEarning","${snapshot}")
                     if (snapshot.exists()){
+                        holder.frameloading.visibility = GONE
                         val thisUser = snapshot.getValue(User::class.java)
+
+                        Log.d("ClaimEarning","Snap ${thisUser}")
+
                         holder.networkName.text = thisUser?.name
                         holder.indexTv.text = "${position+1}"
-                        holder.frameloading.visibility = View.GONE
+
                         db.reference.child("earnings").child(it).get().addOnSuccessListener { snapshot->
                             if (snapshot.exists()){
                                 val earning = snapshot.getValue(EarningDTO::class.java)

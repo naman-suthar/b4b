@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import coil.size.ViewSizeResolver
 import com.bumptech.glide.Glide
@@ -18,6 +19,7 @@ import com.vrcareer.b4b.R
 import com.vrcareer.b4b.databinding.ActivityTrainingsTaskBinding
 import com.vrcareer.b4b.model.Assessment
 import com.vrcareer.b4b.model.TaskItem
+import com.vrcareer.b4b.utils.ApplicationResponse
 
 
 class TrainingsTaskActivity : AppCompatActivity() {
@@ -60,21 +62,35 @@ class TrainingsTaskActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         if (snapshot.exists()){
                             val currAssessment = snapshot.getValue(Assessment::class.java)
-                            if (currAssessment!=null && currAssessment.status == "pending" ){
-                                binding?.btnStartAssessment?.isEnabled = false
-                                binding?.btnStartAssessment?.text = "Pending"
-                            }else if(currAssessment!=null && currAssessment?.status =="approved"){
-                                binding?.btnStartAssessment?.isEnabled = false
-                                binding?.btnStartAssessment?.text = "Approved"
-                            } else{
-                                binding?.btnStartAssessment?.isEnabled = true
-                                binding?.btnStartAssessment?.text = "Retry Assessment"
+                            Log.d("TaskAssessment","$currAssessment")
+                            currAssessment?.let {
+                                when(currAssessment.status){
+                                    ApplicationResponse.Approved.name -> {
+                                        binding?.btnRejectionMessage?.visibility = View.GONE
+                                        binding?.btnStartAssessment?.isEnabled = false
+                                        binding?.btnStartAssessment?.text = "Approved"
+                                    }
+                                    ApplicationResponse.Pending.name -> {
+                                        binding?.btnRejectionMessage?.visibility = View.GONE
+                                        binding?.btnStartAssessment?.isEnabled = false
+                                        binding?.btnStartAssessment?.text = "Pending"
+                                    }
+                                    ApplicationResponse.Rejected.name -> {
+                                        binding?.btnRejectionMessage?.visibility = View.VISIBLE
+                                        binding?.btnRejectionMessage?.setOnClickListener {
+                                            openDialogForMessage(currAssessment.rejected_message)
+                                        }
+                                        binding?.btnStartAssessment?.isEnabled = true
+                                        binding?.btnStartAssessment?.text = "Retry Assessment"
+                                    }
+                                }
                             }
 
 
                         }
                         else{
                             binding?.btnStartAssessment?.isEnabled = true
+                            binding?.btnRejectionMessage?.visibility = View.GONE
                         }
                     }
 
@@ -94,5 +110,18 @@ class TrainingsTaskActivity : AppCompatActivity() {
 
     }
 
+    private fun openDialogForMessage(rejectionMessage: String?) {
+        val builder = AlertDialog.Builder(this)
+        //set title for alert dialog
+        builder.setTitle("Message")
+        //set message for alert dialog
+        builder.setMessage(rejectionMessage)
+        builder.setIcon(R.drawable.ic_baseline_message_24)
 
+        // Create the AlertDialog
+        val alertDialog: AlertDialog = builder.create()
+        // Set other dialog properties
+        alertDialog.setCancelable(true)
+        alertDialog.show()
+    }
 }

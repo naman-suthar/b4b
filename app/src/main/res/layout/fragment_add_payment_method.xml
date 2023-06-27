@@ -115,6 +115,8 @@
                            android:id="@+id/et_bank_full_name"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
+                           android:maxLines="1"
+                           android:inputType="textPersonName"
                            android:hint="Account Holder Name" />
 
 
@@ -129,6 +131,9 @@
                            android:id="@+id/et_bank_account_number"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
+                           android:inputType="number"
+                           android:maxLength="20"
+                           android:maxLines="1"
                            android:hint="Account Number" />
 
 
@@ -143,6 +148,9 @@
                            android:id="@+id/et_bank_account_number_confirm"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
+                           android:inputType="number"
+                           android:maxLength="20"
+                           android:maxLines="1"
                            android:hint="Re-Enter Account Number" />
 
 
@@ -185,6 +193,9 @@
                            android:id="@+id/et_bank_ifsc"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
+                           android:maxLength="11"
+                           android:maxLines="1"
+                           android:inputType="text"
                            android:hint="IFSC Code" />
 
 

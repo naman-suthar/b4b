@@ -13,6 +13,7 @@ import com.vrcareer.b4b.R
 import com.vrcareer.b4b.databinding.ActivityTaskDetailBinding
 import com.vrcareer.b4b.model.Assessment
 import com.vrcareer.b4b.model.TaskItem
+import com.vrcareer.b4b.utils.ApplicationResponse
 
 class TaskDetail : AppCompatActivity() {
     private var binding: ActivityTaskDetailBinding? = null
@@ -37,7 +38,7 @@ class TaskDetail : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
                         val currAssessment = snapshot.getValue(Assessment::class.java)
-                        binding?.btnSubmitTask?.isEnabled = currAssessment != null && currAssessment.status == "approved"
+                        binding?.btnSubmitTask?.isEnabled = currAssessment != null && currAssessment.status == ApplicationResponse.Approved.name
                     }
                 }
 

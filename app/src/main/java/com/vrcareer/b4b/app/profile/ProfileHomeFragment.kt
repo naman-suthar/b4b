@@ -93,7 +93,8 @@ class ProfileHomeFragment : Fragment() {
         }
 
         binding?.btnSupport?.setOnClickListener {
-            val builder = CustomTabsIntent.Builder()
+            redirectMailToGmail("info@brand4brands.com")
+           /* val builder = CustomTabsIntent.Builder()
 
             // to set the toolbar color use CustomTabColorSchemeParams
             // since CustomTabsIntent.Builder().setToolBarColor() is deprecated
@@ -124,7 +125,7 @@ class ProfileHomeFragment : Fragment() {
             //  builder.setExitAnimations(this, android.R.anim.exit_in_anim, android.R.anim.exit_out_anim)
             val customBuilder = builder.build()
             customBuilder.intent.setPackage(package_name)
-            customBuilder.launchUrl(requireContext(), Uri.parse(VR_URI))
+            customBuilder.launchUrl(requireContext(), Uri.parse(VR_URI))*/
 
         }
         binding?.btnWithdrawalHistory?.setOnClickListener {
@@ -173,5 +174,13 @@ class ProfileHomeFragment : Fragment() {
             Toast.makeText(context,"Network Error occurred", Toast.LENGTH_SHORT).show()
 
         }
+    }
+    fun redirectMailToGmail(emailAddress: String) {
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:$emailAddress")
+            `package` = "com.google.android.gm"
+        }
+        startActivity(intent)
+
     }
 }

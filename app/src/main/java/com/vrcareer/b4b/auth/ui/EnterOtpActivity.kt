@@ -273,6 +273,7 @@ class EnterOtpActivity : AppCompatActivity() {
                     val user =auth.currentUser
                     val createUserInDB = User(
                         id = user?.uid,
+                        phoneNo = user?.phoneNumber
                        /* qualification = null,
                         additionalInfo = null,
                         approved_jobs = null,
@@ -284,7 +285,9 @@ class EnterOtpActivity : AppCompatActivity() {
                             isUserCreated = true
                             val userInDb = it.getValue(User::class.java)
                             if (userInDb?.hasRegistered == true){
-                                startActivity(Intent(this, HomeActivity::class.java))
+                                val intent = Intent(this, HomeActivity::class.java)
+
+                                startActivity(intent)
                                 finish()
                             } else  {
                                 startActivity(Intent(this, RegisterActivity::class.java))

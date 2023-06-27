@@ -57,9 +57,9 @@ class DashBoardFragment : Fragment() {
             }
             adapter = context?.let { it1 ->
                 ExploreJobsAdapter(it1, joblist = Job_List) { job ->
+                    Log.d("MyJobClicked", "Clicked $job")
                     val intent = Intent(requireActivity(), ExploreJobDetail::class.java)
                     intent.putExtra("job", job)
-
                     requireActivity().startActivity(intent)
                 }
             }

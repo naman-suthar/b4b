@@ -3,6 +3,7 @@ package com.vrcareer.b4b.model
 data class TaskItem(
     var taskId: String? = null,
     var jobId: String? = null,
+    var jobLogo: String? = null,
     var task_title: String? = null,
     var task_tagline:String? = null,
     var price_tagline: String? = null,
@@ -24,6 +25,7 @@ fun getAirtelTask():TaskItem{
     return TaskItem(
         "Tsk001",
         "IDJ1",
+        "",
         "Merchant Acquisition",
         "Setup QR Codes",
         "xyz",

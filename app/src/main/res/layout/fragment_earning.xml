@@ -129,7 +129,9 @@ android:visibility="gone"
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
+   <!-- Inventory
+
+   <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Filled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -166,20 +168,20 @@ android:visibility="gone"
                     android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                     android:textStyle="bold" />
 
-               <!-- <TextView
+               &lt;!&ndash; <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textAppearance="@style/TextAppearance.Material3.BodySmall" />-->
+                    android:textAppearance="@style/TextAppearance.Material3.BodySmall" />&ndash;&gt;
             </LinearLayout>
-        <!--    <com.google.android.material.button.MaterialButton
+        &lt;!&ndash;    <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_quit_job"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Quit" />-->
+                android:text="Quit" />&ndash;&gt;
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>-->
     <TextView
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="wrap_content"

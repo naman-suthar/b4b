@@ -20,6 +20,8 @@ import com.vrcareer.b4b.R
 import com.vrcareer.b4b.model.KYCDetails
 import com.vrcareer.b4b.databinding.FragmentAddKycDetailsBinding
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 /**
@@ -127,20 +129,24 @@ class AddKycDetailsFragment : Fragment() {
             } else if (user_dob.isEmpty()) {
                 binding?.etUserDob?.requestFocus()
                 binding?.etUserDob?.error = "Field can't be empty"
-            } else if (pan_Card.isEmpty()) {
+            }else if(!isEighteenOrOlder(user_dob)){
+                binding?.etUserDob?.requestFocus()
+                Toast.makeText(requireContext(),"Age is below 18",Toast.LENGTH_SHORT).show()
+            }else if (pan_Card.isEmpty() || !validatePanCard(pan_Card)) {
                 binding?.etUserPanCard?.requestFocus()
-                binding?.etUserPanCard?.error = "Field can't be empty"
+                binding?.etUserPanCard?.error = "Enter valid Pan Card"
             }else if(adhaar_card_no.isEmpty()){
                 binding?.etUserAdhaarCard?.requestFocus()
                 binding?.etUserAdhaarCard?.error = "Field can't be empty"
-            } else if(driving_license_no.isEmpty()){
+            } else if(driving_license_no.isEmpty() || !validateDrivingLicense(driving_license_no)){
                 binding?.etUserDrivingLicense?.requestFocus()
-                binding?.etUserDrivingLicense?.error = "Field can't be empty"
+                binding?.etUserDrivingLicense?.error = "Enter valid License number"
             }
             else if (user_gender == "Gender") {
                 binding?.spinnerGender?.requestFocus()
                 Toast.makeText(this.requireContext(),"Please Select Gender",Toast.LENGTH_SHORT).show()
-            } else {
+            }
+            else {
                 val kycDetails = KYCDetails(
                     id = userId,
                     user_name = user_name,
@@ -187,5 +193,22 @@ class AddKycDetailsFragment : Fragment() {
             this,  // LifecycleOwner
             callback
         )
+    }
+
+    fun validateDrivingLicense(drivingLicenseNumber: String): Boolean {
+        val pattern = Regex("[A-Z]{2}-[0-9]{2}-[0-9]{7}")
+        return pattern.matches(drivingLicenseNumber)
+    }
+    fun validatePanCard(panNumber: String): Boolean {
+        val pattern = Regex("[A-Z]{5}[0-9]{4}[A-Z]{1}")
+        return pattern.matches(panNumber)
+    }
+    fun isEighteenOrOlder(dateOfBirth: String): Boolean {
+        val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
+        val birthDate = dateFormat.parse(dateOfBirth)
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.YEAR, -18)
+        val eighteenYearsAgo = calendar.time
+        return birthDate.before(eighteenYearsAgo) || birthDate == eighteenYearsAgo
     }
 }
