@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import coil.size.ViewSizeResolver
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -111,11 +112,11 @@ class TrainingsTaskActivity : AppCompatActivity() {
     }
 
     private fun openDialogForMessage(rejectionMessage: String?) {
-        val builder = AlertDialog.Builder(this)
+        val builder = MaterialAlertDialogBuilder(this)
         //set title for alert dialog
-        builder.setTitle("Message")
+        builder.setTitle("Last application response")
         //set message for alert dialog
-        builder.setMessage(rejectionMessage)
+        builder.setMessage(rejectionMessage?.replace("""\\n""","\n"))
         builder.setIcon(R.drawable.ic_baseline_message_24)
 
         // Create the AlertDialog
